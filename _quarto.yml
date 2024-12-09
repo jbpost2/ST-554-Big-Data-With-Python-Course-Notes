@@ -1,0 +1,38 @@
+project:
+  type: website
+  render: 
+    - index.qmd
+    - about.qmd
+    - 01_Programming_in_python/02_Basic_Use_Of_Python.ipynb
+
+website:
+  title: "ST-554-Big-Data-with-Python"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+    right:
+      - icon: github
+        href: https://github.com/jbpost2/ST-554-Big-Data-With-Python-Course-Notes
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - index.qmd
+      - 01_Course_Goals.Rmd
+  page-navigation: true
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+callout-appearance: simple
+
+date: today
+date-format: iso
+
+
