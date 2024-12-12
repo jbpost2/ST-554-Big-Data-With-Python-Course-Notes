@@ -1,8 +1,10 @@
 project:
   type: website
+  output-dir: docs
   render: 
     - index.qmd
     - about.qmd
+    - 01_Programming_in_python/01_Course_Goals_Landing.Rmd
     - 01_Programming_in_python/02_Basic_Use_Of_Python.ipynb
 
 website:
@@ -19,17 +21,24 @@ website:
   sidebar:
     style: "docked"
     search: true
+    collapse-level: 1
     contents:
       - index.qmd
-      - 01_Course_Goals.Rmd
+      - section: "Week 1"
+        contents:
+          - 01_Programming_in_python/01_Course_Goals_Landing.Rmd
+          - 01_Programming_in_python/02_Basic_Use_Of_Python.ipynb
   page-navigation: true
+  reader-mode: true
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
+    grid:
+      sidebar-width: 300px
+      
 callout-appearance: simple
 
 date: today

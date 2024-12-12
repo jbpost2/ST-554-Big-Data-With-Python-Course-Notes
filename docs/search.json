@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html",
+    "title": "Basic Use of Python",
+    "section": "",
+    "text": "Justin Post (Some notes modified from Dr. Eric Chi)\nIn preparation for dealing with big data we need to learn a programming language and figure out a good coding environment. We’ll learn python and code in Google Colab/JupyterLab.\nWe choose python due to its popularity and the ease of programming in spark through pyspark.\nWe use JupyterLab as it is a widely used software for creating python notebooks. Google Colab is built on JupyterLab!"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#getting-started",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#getting-started",
+    "title": "Basic Use of Python",
+    "section": "Getting Started",
+    "text": "Getting Started\nWhen you open a new notebook in colab by default it will use python to run any ‘code cells’ (this can be changed in the ‘notebook settings’ under the View -&gt; ‘Notebook info’ menu).\nThere are two types of cells: - Code cells: allow you to submit code - Text cells: allow you to write text using ‘markdown’ (we’ll learn more about that shortly!)\nThese can be added in the top left of the notebook (+ Code and + Text). Below is a python code cell. These can be run by clicking ‘shift-enter’ when in the cell.\n\n#A comment - this text is not evaluated\n5 + 6\n10 * 2\n5**2\n\n25\n\n\n\nOnly the last bit of code is ‘printed’ unless you specifically print it. We’ll do this much of the time with print() function.\n\n\n# % is mod, // is floor\nprint(10 / 3)\nprint(10 % 3)\nprint(10 // 3)\n\n3.3333333333333335\n1\n3\n\n\n\nOperators are applied left to right, except for exponentiation\n\n\n3 + 4 - 5\n\n2\n\n\n\n(3 + 4) - 5\n\n2\n\n\n\n3**2**4\n\n43046721\n\n\n\n#interpreted this way\n3**(2**4)\n\n43046721\n\n\n\n#not this\n(3**2)**4\n\n6561"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#creating-variables",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#creating-variables",
+    "title": "Basic Use of Python",
+    "section": "Creating Variables",
+    "text": "Creating Variables\nYou can assign variables to reference an object using =\n\nx = \"Hello! \"\ny = 'How are you?'\nprint(x)\nprint(x + y)\n\nHello! \nHello! How are you?\n\n\n\nStrings are automatically concatenated using the + operator. As with most programming languages, there are special characters like \\ which indicate something. For instance, \\n is a line break. These appear differently depending on if you print something or just view the object.\n\n\nx = \"Hello! \\n\"\ny = 'Then I asked, \"How are you?\"'\nx\n\n'Hello! \\n'\n\n\n\nprint(x)\n\nHello! \n\n\n\n\nx + y\n\n'Hello! \\nThen I asked, \"How are you?\"'\n\n\n\nprint(x + y)\n\nHello! \nThen I asked, \"How are you?\"\n\n\n\nVariables can be used to simplify and generalize your code\n\n\ndegrees_celsius = 26.0\nprint(9 / 5 * degrees_celsius + 32)\ndegrees_celsius = 100\nprint(9 / 5 * degrees_celsius + 32)\n\n78.80000000000001\n212.0"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#object-types",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#object-types",
+    "title": "Basic Use of Python",
+    "section": "Object Types",
+    "text": "Object Types\nThere are a number of built-in objects you can create. Some important ones are listed below:\n\nText Type: str\n\n\ny = \"text string\"\ntype(y)\n\n\nNumeric Types: int, float\n\n\ny = 10\ntype(y)\nx = 10.4\ntype(x)\n\n\nBoolean Type: bool\n\n\ny = True\ntype(y)\n\n\nSequence Types: list, tuple\n\n\nz = [10, \"a\", 11.5, True]\ntype(z)\n\n\nMapping Type: dict\n\n\nw = {\"key1\": \"value1\",\n     \"key2\": [\"value2\", 10]}\ntype(w)"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#multiple-assignment",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#multiple-assignment",
+    "title": "Basic Use of Python",
+    "section": "Multiple Assignment",
+    "text": "Multiple Assignment\n\nAssigning multiple variables on one line is easy\n\n\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\nprint(z)\n\n\nx = y = z = \"Orange\"\nprint(x)\nprint(y)\n\nThe use of * can allow you to ‘pack’ the remaining values into one object. Placement of the * is important here!\n\nx, *y = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\ntype(y)\n\nOrange\n['Banana', 'Cherry']\n\n\nlist\n\n\n\n*x, y = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\n\n['Orange', 'Banana']\nCherry"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable",
+    "title": "Basic Use of Python",
+    "section": "_ Variable",
+    "text": "_ Variable\nWhen doing python interactively (as with a JupyterLab notebook), the last evaluated expression is assigned to the variable _. This carries across code cells.\n\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nx\n\n'Orange'\n\n\n\n_\n\n'Orange'\n\n\n\nx\n\n'Orange'\n\n\n\n#print doesn't count toward the _!\nprint(y)\n\nBanana\n\n\n\n_\n\n'Orange'\n\n\n\ny\n\n'Banana'\n\n\n\n_\n\n'Banana'\n\n\nWe’ll use this _ operator when doing computations where we don’t need to save things. For instance,\n\ndegrees_celcius = 100\n(9 / 5) * degrees_celcius + 32\n\n\n_ - 10\n\n\n(9 / 5) * degrees_celcius + 32 - 10\n\n\n_ * 10\n\n\nsum_numbers = 0\n#no need to create a variable for the index\nfor _ in range(1,101):\n  sum_numbers += _\nsum_numbers\n\n5050"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#copying-vs-referencing",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#copying-vs-referencing",
+    "title": "Basic Use of Python",
+    "section": "Copying vs Referencing",
+    "text": "Copying vs Referencing\nCareful when modifying elements of a compound object: ‘assignment statements do not copy objects, they create bindings between a target (a spot in computer memory) and an object’!\nIf you come from R, this is a very different behavior!\n\n#Changing the original modifies both variables\nx = [1, 2, 3, \"Cats Rule!\"] #create a 'list' of four values\ny = x                       #Make y an alias for x (reference the same memory)\nprint(x, y)\n\n[1, 2, 3, 'Cats Rule!'] [1, 2, 3, 'Cats Rule!']\n\n\n\nx[3] = \"Dogs rule!\" #note that this modifies y!\nprint(x, y)\n\n[1, 2, 3, 'Dogs rule!'] [1, 2, 3, 'Dogs rule!']\n\n\n\nIf you want to avoid this behavior, you can create a copy of the object instead of a reference\n\n\n#Can create a (shallow) copy of the object rather than point to the same object in memory\ny = x.copy()\nx[2] = 10\nx[3]= \"No cats rule!\"\nprint(x, y)\n\n[1, 2, 10, 'No cats rule!'] [1, 2, 3, 'Cats Rule!']"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable-names",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable-names",
+    "title": "Basic Use of Python",
+    "section": "Variable Names",
+    "text": "Variable Names\nVariable names can use letters, digits, and the underscore symbol (but cannot start with a digit)\nOk variable names:\n\nX, species5618, and degrees_celsius\n\nBad variable names:\n\n777 (begins with a digit)\nno-way! (includes punctuation)"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#augmented-assignment",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#augmented-assignment",
+    "title": "Basic Use of Python",
+    "section": "Augmented Assignment",
+    "text": "Augmented Assignment\nPython has lots of shorthand notation!\n\nQuite often we want to take a value, add to it, and replace the old value\n\n\nwinnings = 100\nwinnings = winnings + 20\nwinnings\n\n120\n\n\n\n‘Augmented assignment’ gives a shorthand\n\n\nwinnings = 100\nwinnings += 20\nwinnings\n\n120\n\n\n\nThis works for all operators except negation\n\n\nwinnings\nwinnings -= 30\nwinnings\n\n\nwinnings *= 40\nwinnings\n\n\nwinnings **= 1/2\nwinnings\n\n\nAugmented Assignment Execution\nExecuted in the following way:\n\nEvaluate the expression on the right of the = sign to produce a value\nApply the operator to the variable on the left and the value produced\nStore this new value in the memory address of the variable on the left of the =.\n\nThis means the operator is applied after the expression on the right is evaluated.\n\nwinnings = 100\nwinnings += 100*10\nwinnings"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#continuing-a-line-of-code",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#continuing-a-line-of-code",
+    "title": "Basic Use of Python",
+    "section": "Continuing a Line of Code",
+    "text": "Continuing a Line of Code\n\nFor long lines of code, we can break the code across multiple lines using \\ or by wrapping the code in ()\n\n\n10 + 20 - 100 * 60 \\\n/ 20\n\n-270.0\n\n\n\n(10 + 20 - 100 * 60\n/20)\n\n-270.0"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#functions-methods",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#functions-methods",
+    "title": "Basic Use of Python",
+    "section": "Functions & Methods",
+    "text": "Functions & Methods\nTwo major ways to do an operation on a variable/object:\n\nFunctions: function_name(myvar, other_args)\nMethods: myvar.method(other_args)\n\n\nmyList = [1, 10, 100, 1000]\n#len function\nlen(myList)\n\n4\n\n\n\n#max function\nmax(myList)\n\n1000\n\n\n\n#pop method\nmyList.pop(3)\n\n1000\n\n\n\nmyList\n\n[1, 10, 100]\n\n\n\nmyList.append(100000)\nmyList\n\n[1, 10, 100, 100000]"
+  },
+  {
+    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#video-demo",
+    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#video-demo",
+    "title": "Basic Use of Python",
+    "section": "Video Demo",
+    "text": "Video Demo\nThis quick video shows how to open a new Google Colab notebook and run some basic python code. I’d pop the video out into the panopto player using the arrow icon in the bottom right.\n\nfrom IPython.display import IFrame\nIFrame(src = 'https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=bae161a8-bac0-4c44-a7a1-b0ef0163e90d&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all', width = '620', height = '380')"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ST-554-Big-Data-with-Python",
+    "section": "",
+    "text": "Website for course…\nLinks exist? somewhere?"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]
