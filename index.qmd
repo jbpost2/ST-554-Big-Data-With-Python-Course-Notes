@@ -1,7 +1,134 @@
 ---
-title: "ST-554-Big-Data-with-Python"
+title: "Analysis of Big Data"
 ---
 
-Website for course...
+Welcome to ST 554 - Analysis of Big Data (with `python`)
 
-Links exist? somewhere?
+In this course we'll look at common issues, analysis, and software used with big data. We'll discuss the major aspects with the commonly cited '5 V's of Big Data':
+
+Volume, Variety, Velocity, Veracity (Variability), and Value
+
+```{r, echo = FALSE, out.width = "500px"}
+knitr::include_graphics("01_Programming_in_python/img/big-data-characteristics.png")
+```
+
+The course is split into four topics
+
+1.  Programming in `python`
+2.  Big Data Management
+3.  Modeling Big Data (with `Spark` via `pyspark`)
+4.  Streaming Data
+
+Using `python` as our programming language we'll learn about using Jupyter notebooks to share and document our work. We'll use `pyspark` as our interface to the `Spark` software, which is commonly used to handle big data.
+
+## Course Learning Outcomes
+
+At the end of this course students will be able to
+
+-   explain the steps and purpose of `python` programs (CO 1)
+-   efficiently read in, combine, and manipulate data in python (CO 2)
+-   utilize help and other resources to customize programs (CO 3)
+-   write programs using good programming practices (CO 4)
+-   explore, manage, and solve common common problems with big data (CO 5)
+
+## Weekly To-do List
+
+Generally speaking, each week will have a few videos to watch and readings to do as well as corresponding homework assignments (see the syllabus on Moodle for homework policies).
+
+-   There will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.
+-   There will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment.
+
+## Getting Help!
+
+To obtain course help there are a number of options:
+
+-   Discussion Forum on Moodle - This should be used for any question you feel comfortable asking and having others view. The TA, other students, and I will answer questions on this board. This will be the fastest way to receive a response!\
+-   E-mail - If there is a question that you don't feel comfortable asking the whole class you can use e-mail. The TA and I will be checking daily (during the regular work week).
+-   Zoom Office Hour Sessions - These sessions can be used to share screens and have multiple users. You can do text chat, voice, and video. They are great for a class like this!
+
+## Spring 2025 Course Schedule
+
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Topic/Week        | Learning Materials                                              | Assignments                               |
++===================+=================================================================+===========================================+
+| Week 1\           | Read - Week 1 Overview\                                         | HW 1 due W, 1/15                          |
+| 1/6-1/10          | 01 - Course Goals\                                              |                                           |
+|                   | 02 - Basic Use of Python\                                       |                                           |
+|                   | 03 - Modules\                                                   |                                           |
+|                   | 04 - JupyterLab Notebooks & Markdown\                           |                                           |
+|                   | 05 - List Basics and Strings\                                   |                                           |
+|                   | 06 - Numeric Types and Booleans\                                |                                           |
+|                   | 07 - Common Uses for Data                                       |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 2\           | 08 - User Defined Functions\                                    | HW 2 due W, 1/22                          |
+| 1/13-1/17         | 09 - Control Flow\                                              |                                           |
+|                   | 10 - Lists and Tuples\                                          |                                           |
+|                   | 11 - Dictionaries\                                              |                                           |
+|                   | 12 - Numpy\                                                     |                                           |
+|                   | 13 - Exploratory Data Analysis Concepts                         |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 3\           | 14 - Pandas Series\                                             | HW 3 due W, 1/29                          |
+| 1/21-1/24 (Off M) | 15 - Pandas DataFrames\                                         |                                           |
+|                   | 16 - Pandas for Reading Data\                                   |                                           |
+|                   | 17 - Numeric Summaries                                          |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 4\           | 18 - More Function Writing\                                     | HW 4 due W, 2/5                           |
+| 1/27-1/31         | 19 - Plotting with Matplotlib\                                  |                                           |
+|                   | 20 - Plotting with pandas\                                      |                                           |
+|                   | 21 - Error Handling                                             |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 5\           | 22 - Big Recap!\                                                | Exam 1 Th/F 2/6-2/7 - covers weeks 1-4    |
+| 2/3-2/7           | 23 - Fitting and Evaluating SLR Models\                         |                                           |
+|                   | 24 - Prediction and Training/Test Set Ideas\                    | Project 1 due W, 2/19                     |
+|                   | 25 - Cross-Validation\                                          |                                           |
+|                   | 26 - Multiple Linear Regression\                                |                                           |
+|                   | 27 - LASSO                                                      |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 6\           | No new material. Project work time!                             |                                           |
+| 2/10-2/14 (Off T) |                                                                 |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 7\           | 28 - Big Data Concepts\                                         | HW 5 due W, 2/26                          |
+| 2/17-2/21         | 29 - Bias and Other Issues with Big Data\                       |                                           |
+|                   | 30 - SQL Basics\                                                |                                           |
+|                   | 31 - SQL Joins\                                                 |                                           |
+|                   | 32 - SQL Readings                                               |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 8\           | 33 - Data Flow, Data Warehouses, and Data Lakes\                | HW 6 due W, 3/5                           |
+| 2/24-2/28         | 34 - HDFS                                                       |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 9\           | 35 - Connecting to our JupyterHub Environment\                  | Project 2 due W, 3/19                     |
+| 3/3-3/7           | 35 - Spark for Dealing with Big Data\                           |                                           |
+|                   | 36 - pyspark: RDDs\                                             |                                           |
+|                   | 37 - pyspark: pandas-on-Spark\                                  |                                           |
+|                   | 38 - pyspark: Spark SQL                                         |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 10\          | No new material - spring break                                  |                                           |
+| 3/10-3/14         |                                                                 |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 11\          | 39 - Modeling Recap\                                            | HW 7 due W, 3/26                          |
+| 3/17-3/21         | 40 - Modeling Example\                                          |                                           |
+|                   | 41 - Logistic Regression Basics\                                |                                           |
+|                   | 42 - Logistic Regression Extensions\                            |                                           |
+|                   | 43 - Regularized Regression                                     |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 12\          | 44 - Loss Functions & Model Performance\                        | HW 8 due W, 4/2                           |
+| 3/24-3/28         | 45 - Classification & Regression Trees\                         |                                           |
+|                   | 46 - Bagging Trees & Random Forests                             |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 13\          | 47 - Spark MLlib Basics\                                        | HW 9 due W, 4/9                           |
+| 3/31-4/4          | 48 - Model Pipelines in MLlib\                                  |                                           |
+|                   | 49 - MLflow\                                                    |                                           |
+|                   | 50 - MLOps                                                      |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 14\          | 51 - Streaming Data Concepts\                                   | Exam 2 Th/F 4/10-4/11 - covers weeks 1-13 |
+| 4/7-4/11          | 52 - Basic Summaries on Streaming Data\                         |                                           |
+|                   | 53 - Preprocessing, Sending Alerts, & Combining Streams         | (emphasis on 5-13)                        |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 15\          | 54 - Spark Structured Streaming\                                | Final Project due M, 4/28                 |
+| 4/14-4/18         | 55 - Reading & Writing Streams with Spark Structured Streaming\ |                                           |
+|                   | 56 - Transformations, Windowing, & Aggregations\                |                                           |
+|                   | 57 - Streaming Joins                                            |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+
+| Week 16\          | No new material.                                                |                                           |
+| 4/21-4/22         |                                                                 |                                           |
++-------------------+-----------------------------------------------------------------+-------------------------------------------+

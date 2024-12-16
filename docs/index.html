@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-12">
+<meta name="dcterms.date" content="2024-12-16">
 
-<title>ST-554-Big-Data-with-Python</title>
+<title>ST 554 Analysis of Big Data (with Python) - Analysis of Big Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_Programming_in_python/02_Basic_Use_Of_Python.html" rel="next">
+<link href="./01_Programming_in_python/01-Course_Goals_Landing.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -70,11 +77,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">ST-554-Big-Data-with-Python</span>
+    <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -84,39 +91,39 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python-Course-Notes" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">ST-554-Big-Data-with-Python</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Analysis of Big Data</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -126,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -137,25 +144,49 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ST-554-Big-Data-with-Python</span></a>
+ <span class="menu-text">Analysis of Big Data</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Week 1</span></a>
+ <span class="menu-text">Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
- <span class="menu-text">01_Programming_in_python/01_Course_Goals_Landing.Rmd</span>
+  <div class="sidebar-item-container"> 
+  <a href="./01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Goals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Programming_in_python/02-Basic_Use_Of_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Use of Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Programming_in_python/03-Modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">01_Programming_in_python/05-List-Basics_Strings.ipynb</span>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/02_Basic_Use_Of_Python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic Use of Python</span></a>
+  <a href="./01_Programming_in_python/06-Numeric_Types_Booleans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numeric Types (Int and Float) &amp; Booleans</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
   </div>
 </li>
       </ul>
@@ -163,17 +194,26 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-learning-outcomes" id="toc-course-learning-outcomes" class="nav-link active" data-scroll-target="#course-learning-outcomes">Course Learning Outcomes</a></li>
+  <li><a href="#weekly-to-do-list" id="toc-weekly-to-do-list" class="nav-link" data-scroll-target="#weekly-to-do-list">Weekly To-do List</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help!</a></li>
+  <li><a href="#spring-2025-course-schedule" id="toc-spring-2025-course-schedule" class="nav-link" data-scroll-target="#spring-2025-course-schedule">Spring 2025 Course Schedule</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ST-554-Big-Data-with-Python</h1>
+<h1 class="title">Analysis of Big Data</h1>
 </div>
 
 
@@ -184,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-12</p>
+      <p class="date">2024-12-16</p>
     </div>
   </div>
   
@@ -192,12 +232,224 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
-<p>Website for course…</p>
-<p>Links exist? somewhere?</p>
+
+<p>Welcome to ST 554 - Analysis of Big Data (with <code>python</code>)</p>
+<p>In this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:</p>
+<p>Volume, Variety, Velocity, Veracity (Variability), and Value</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_Programming_in_python/img/big-data-characteristics.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The course is split into four topics</p>
+<ol type="1">
+<li>Programming in <code>python</code></li>
+<li>Big Data Management</li>
+<li>Modeling Big Data (with <code>Spark</code> via <code>pyspark</code>)</li>
+<li>Streaming Data</li>
+</ol>
+<p>Using <code>python</code> as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use <code>pyspark</code> as our interface to the <code>Spark</code> software, which is commonly used to handle big data.</p>
+<section id="course-learning-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="course-learning-outcomes">Course Learning Outcomes</h2>
+<p>At the end of this course students will be able to</p>
+<ul>
+<li>explain the steps and purpose of <code>python</code> programs (CO 1)</li>
+<li>efficiently read in, combine, and manipulate data in python (CO 2)</li>
+<li>utilize help and other resources to customize programs (CO 3)</li>
+<li>write programs using good programming practices (CO 4)</li>
+<li>explore, manage, and solve common common problems with big data (CO 5)</li>
+</ul>
+</section>
+<section id="weekly-to-do-list" class="level2">
+<h2 class="anchored" data-anchor-id="weekly-to-do-list">Weekly To-do List</h2>
+<p>Generally speaking, each week will have a few videos to watch and readings to do as well as corresponding homework assignments (see the syllabus on Moodle for homework policies).</p>
+<ul>
+<li>There will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.</li>
+<li>There will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment.</li>
+</ul>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting Help!</h2>
+<p>To obtain course help there are a number of options:</p>
+<ul>
+<li>Discussion Forum on Moodle - This should be used for any question you feel comfortable asking and having others view. The TA, other students, and I will answer questions on this board. This will be the fastest way to receive a response!<br>
+</li>
+<li>E-mail - If there is a question that you don’t feel comfortable asking the whole class you can use e-mail. The TA and I will be checking daily (during the regular work week).</li>
+<li>Zoom Office Hour Sessions - These sessions can be used to share screens and have multiple users. You can do text chat, voice, and video. They are great for a class like this!</li>
+</ul>
+</section>
+<section id="spring-2025-course-schedule" class="level2">
+<h2 class="anchored" data-anchor-id="spring-2025-course-schedule">Spring 2025 Course Schedule</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 50%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Topic/Week</th>
+<th>Learning Materials</th>
+<th>Assignments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Week 1<br>
+1/6-1/10</td>
+<td>Read - Week 1 Overview<br>
+01 - Course Goals<br>
+02 - Basic Use of Python<br>
+03 - Modules<br>
+04 - JupyterLab Notebooks &amp; Markdown<br>
+05 - List Basics and Strings<br>
+06 - Numeric Types and Booleans<br>
+07 - Common Uses for Data</td>
+<td>HW 1 due W, 1/15</td>
+</tr>
+<tr class="even">
+<td>Week 2<br>
+1/13-1/17</td>
+<td>08 - User Defined Functions<br>
+09 - Control Flow<br>
+10 - Lists and Tuples<br>
+11 - Dictionaries<br>
+12 - Numpy<br>
+13 - Exploratory Data Analysis Concepts</td>
+<td>HW 2 due W, 1/22</td>
+</tr>
+<tr class="odd">
+<td>Week 3<br>
+1/21-1/24 (Off M)</td>
+<td>14 - Pandas Series<br>
+15 - Pandas DataFrames<br>
+16 - Pandas for Reading Data<br>
+17 - Numeric Summaries</td>
+<td>HW 3 due W, 1/29</td>
+</tr>
+<tr class="even">
+<td>Week 4<br>
+1/27-1/31</td>
+<td>18 - More Function Writing<br>
+19 - Plotting with Matplotlib<br>
+20 - Plotting with pandas<br>
+21 - Error Handling</td>
+<td>HW 4 due W, 2/5</td>
+</tr>
+<tr class="odd">
+<td>Week 5<br>
+2/3-2/7</td>
+<td>22 - Big Recap!<br>
+23 - Fitting and Evaluating SLR Models<br>
+24 - Prediction and Training/Test Set Ideas<br>
+25 - Cross-Validation<br>
+26 - Multiple Linear Regression<br>
+27 - LASSO</td>
+<td><p>Exam 1 Th/F 2/6-2/7 - covers weeks 1-4</p>
+<p>Project 1 due W, 2/19</p></td>
+</tr>
+<tr class="even">
+<td>Week 6<br>
+2/10-2/14 (Off T)</td>
+<td>No new material. Project work time!</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Week 7<br>
+2/17-2/21</td>
+<td>28 - Big Data Concepts<br>
+29 - Bias and Other Issues with Big Data<br>
+30 - SQL Basics<br>
+31 - SQL Joins<br>
+32 - SQL Readings</td>
+<td>HW 5 due W, 2/26</td>
+</tr>
+<tr class="even">
+<td>Week 8<br>
+2/24-2/28</td>
+<td>33 - Data Flow, Data Warehouses, and Data Lakes<br>
+34 - HDFS</td>
+<td>HW 6 due W, 3/5</td>
+</tr>
+<tr class="odd">
+<td>Week 9<br>
+3/3-3/7</td>
+<td>35 - Connecting to our JupyterHub Environment<br>
+35 - Spark for Dealing with Big Data<br>
+36 - pyspark: RDDs<br>
+37 - pyspark: pandas-on-Spark<br>
+38 - pyspark: Spark SQL</td>
+<td>Project 2 due W, 3/19</td>
+</tr>
+<tr class="even">
+<td>Week 10<br>
+3/10-3/14</td>
+<td>No new material - spring break</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Week 11<br>
+3/17-3/21</td>
+<td>39 - Modeling Recap<br>
+40 - Modeling Example<br>
+41 - Logistic Regression Basics<br>
+42 - Logistic Regression Extensions<br>
+43 - Regularized Regression</td>
+<td>HW 7 due W, 3/26</td>
+</tr>
+<tr class="even">
+<td>Week 12<br>
+3/24-3/28</td>
+<td>44 - Loss Functions &amp; Model Performance<br>
+45 - Classification &amp; Regression Trees<br>
+46 - Bagging Trees &amp; Random Forests</td>
+<td>HW 8 due W, 4/2</td>
+</tr>
+<tr class="odd">
+<td>Week 13<br>
+3/31-4/4</td>
+<td>47 - Spark MLlib Basics<br>
+48 - Model Pipelines in MLlib<br>
+49 - MLflow<br>
+50 - MLOps</td>
+<td>HW 9 due W, 4/9</td>
+</tr>
+<tr class="even">
+<td>Week 14<br>
+4/7-4/11</td>
+<td>51 - Streaming Data Concepts<br>
+52 - Basic Summaries on Streaming Data<br>
+53 - Preprocessing, Sending Alerts, &amp; Combining Streams</td>
+<td><p>Exam 2 Th/F 4/10-4/11 - covers weeks 1-13</p>
+<p>(emphasis on 5-13)</p></td>
+</tr>
+<tr class="odd">
+<td>Week 15<br>
+4/14-4/18</td>
+<td>54 - Spark Structured Streaming<br>
+55 - Reading &amp; Writing Streams with Spark Structured Streaming<br>
+56 - Transformations, Windowing, &amp; Aggregations<br>
+57 - Streaming Joins</td>
+<td>Final Project due M, 4/28</td>
+</tr>
+<tr class="even">
+<td>Week 16<br>
+4/21-4/22</td>
+<td>No new material.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -279,10 +531,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -292,8 +561,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -305,7 +583,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -349,6 +750,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -374,6 +776,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -437,12 +865,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_Programming_in_python/02_Basic_Use_Of_Python.html" class="pagination-link">
-        <span class="nav-page-text">Basic Use of Python</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./01_Programming_in_python/01-Course_Goals_Landing.html" class="pagination-link" aria-label="Course Goals">
+        <span class="nav-page-text">Course Goals</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

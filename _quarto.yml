@@ -4,11 +4,15 @@ project:
   render: 
     - index.qmd
     - about.qmd
-    - 01_Programming_in_python/01_Course_Goals_Landing.Rmd
-    - 01_Programming_in_python/02_Basic_Use_Of_Python.ipynb
+    - 01_Programming_in_python/01-Course_Goals_Landing.qmd
+    - 01_Programming_in_python/02-Basic_Use_Of_Python.ipynb
+    - 01_Programming_in_python/03-Modules.ipynb
+    - 01_Programming_in_python/05-List-Basics_Strings.ipynb
+    - 01_Programming_in_python/06-Numeric_Types_Booleans.ipynb
+    - 01_Programming_in_python/07-Common_Uses_For_Data_Landing.qmd
 
 website:
-  title: "ST-554-Big-Data-with-Python"
+  title: "ST 554 Analysis of Big Data (with Python)"
   navbar:
     background: primary
     left:
@@ -17,17 +21,21 @@ website:
       - about.qmd
     right:
       - icon: github
-        href: https://github.com/jbpost2/ST-554-Big-Data-With-Python-Course-Notes
+        href: https://github.com/jbpost2/ST-554-Big-Data-With-Python
   sidebar:
     style: "docked"
     search: true
     collapse-level: 1
     contents:
       - index.qmd
-      - section: "Week 1"
+      - section: "Learning `python`"
         contents:
-          - 01_Programming_in_python/01_Course_Goals_Landing.Rmd
-          - 01_Programming_in_python/02_Basic_Use_Of_Python.ipynb
+          - 01_Programming_in_python/01-Course_Goals_Landing.qmd
+          - 01_Programming_in_python/02-Basic_Use_Of_Python.ipynb
+          - 01_Programming_in_python/03-Modules.ipynb
+          - 01_Programming_in_python/05-List-Basics_Strings.ipynb
+          - 01_Programming_in_python/06-Numeric_Types_Booleans.ipynb
+          - 01_Programming_in_python/07-Common_Uses_For_Data_Landing.qmd
   page-navigation: true
   reader-mode: true
 

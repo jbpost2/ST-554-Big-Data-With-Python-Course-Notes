@@ -1,94 +1,202 @@
 [
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html",
-    "title": "Basic Use of Python",
+    "objectID": "01_Programming_in_python/07-Common_Uses_For_Data_Landing.html",
+    "href": "01_Programming_in_python/07-Common_Uses_For_Data_Landing.html",
+    "title": "Common Uses for Data",
     "section": "",
-    "text": "Justin Post (Some notes modified from Dr. Eric Chi)\nIn preparation for dealing with big data we need to learn a programming language and figure out a good coding environment. We’ll learn python and code in Google Colab/JupyterLab.\nWe choose python due to its popularity and the ease of programming in spark through pyspark.\nWe use JupyterLab as it is a widely used software for creating python notebooks. Google Colab is built on JupyterLab!"
+    "text": "The video below discusses the common ways we use data. We discuss the general idea of statistical learning and using data for descriptive purposes, for predictive purposes, in order to make statistical inferences, and to find patterns in data.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Common Uses for Data"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#getting-started",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#getting-started",
-    "title": "Basic Use of Python",
-    "section": "Getting Started",
-    "text": "Getting Started\nWhen you open a new notebook in colab by default it will use python to run any ‘code cells’ (this can be changed in the ‘notebook settings’ under the View -&gt; ‘Notebook info’ menu).\nThere are two types of cells: - Code cells: allow you to submit code - Text cells: allow you to write text using ‘markdown’ (we’ll learn more about that shortly!)\nThese can be added in the top left of the notebook (+ Code and + Text). Below is a python code cell. These can be run by clicking ‘shift-enter’ when in the cell.\n\n#A comment - this text is not evaluated\n5 + 6\n10 * 2\n5**2\n\n25\n\n\n\nOnly the last bit of code is ‘printed’ unless you specifically print it. We’ll do this much of the time with print() function.\n\n\n# % is mod, // is floor\nprint(10 / 3)\nprint(10 % 3)\nprint(10 // 3)\n\n3.3333333333333335\n1\n3\n\n\n\nOperators are applied left to right, except for exponentiation\n\n\n3 + 4 - 5\n\n2\n\n\n\n(3 + 4) - 5\n\n2\n\n\n\n3**2**4\n\n43046721\n\n\n\n#interpreted this way\n3**(2**4)\n\n43046721\n\n\n\n#not this\n(3**2)**4\n\n6561"
+    "objectID": "01_Programming_in_python/07-Common_Uses_For_Data_Landing.html#notes",
+    "href": "01_Programming_in_python/07-Common_Uses_For_Data_Landing.html#notes",
+    "title": "Common Uses for Data",
+    "section": "Notes",
+    "text": "Notes\n\nHTML version\nPDF version\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Common Uses for Data"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#creating-variables",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#creating-variables",
-    "title": "Basic Use of Python",
-    "section": "Creating Variables",
-    "text": "Creating Variables\nYou can assign variables to reference an object using =\n\nx = \"Hello! \"\ny = 'How are you?'\nprint(x)\nprint(x + y)\n\nHello! \nHello! How are you?\n\n\n\nStrings are automatically concatenated using the + operator. As with most programming languages, there are special characters like \\ which indicate something. For instance, \\n is a line break. These appear differently depending on if you print something or just view the object.\n\n\nx = \"Hello! \\n\"\ny = 'Then I asked, \"How are you?\"'\nx\n\n'Hello! \\n'\n\n\n\nprint(x)\n\nHello! \n\n\n\n\nx + y\n\n'Hello! \\nThen I asked, \"How are you?\"'\n\n\n\nprint(x + y)\n\nHello! \nThen I asked, \"How are you?\"\n\n\n\nVariables can be used to simplify and generalize your code\n\n\ndegrees_celsius = 26.0\nprint(9 / 5 * degrees_celsius + 32)\ndegrees_celsius = 100\nprint(9 / 5 * degrees_celsius + 32)\n\n78.80000000000001\n212.0"
+    "objectID": "01_Programming_in_python/03-Modules.html",
+    "href": "01_Programming_in_python/03-Modules.html",
+    "title": "Modules",
+    "section": "",
+    "text": "Justin Post\nNow that we know the basics of how python works and a little bit about how our programming environment functions, we can look at python ‘modules’. If you know R, these are smilar to R packages.",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#object-types",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#object-types",
-    "title": "Basic Use of Python",
-    "section": "Object Types",
-    "text": "Object Types\nThere are a number of built-in objects you can create. Some important ones are listed below:\n\nText Type: str\n\n\ny = \"text string\"\ntype(y)\n\n\nNumeric Types: int, float\n\n\ny = 10\ntype(y)\nx = 10.4\ntype(x)\n\n\nBoolean Type: bool\n\n\ny = True\ntype(y)\n\n\nSequence Types: list, tuple\n\n\nz = [10, \"a\", 11.5, True]\ntype(z)\n\n\nMapping Type: dict\n\n\nw = {\"key1\": \"value1\",\n     \"key2\": [\"value2\", 10]}\ntype(w)"
+    "objectID": "01_Programming_in_python/03-Modules.html#what-is-a-module",
+    "href": "01_Programming_in_python/03-Modules.html#what-is-a-module",
+    "title": "Modules",
+    "section": "What is a Module?",
+    "text": "What is a Module?\n\nA collection of (related) definitions and statements that are grouped together in a single file (a .py file)\n\nGives access to additional functionality\n\nSome come standard, others must be installed (i.e. downloaded)\n\nModules are then imported into your session\n\nFully imported with import module_name\nSelective import with from module_name import thing1 thing2",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#multiple-assignment",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#multiple-assignment",
-    "title": "Basic Use of Python",
-    "section": "Multiple Assignment",
-    "text": "Multiple Assignment\n\nAssigning multiple variables on one line is easy\n\n\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\nprint(z)\n\n\nx = y = z = \"Orange\"\nprint(x)\nprint(y)\n\nThe use of * can allow you to ‘pack’ the remaining values into one object. Placement of the * is important here!\n\nx, *y = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\ntype(y)\n\nOrange\n['Banana', 'Cherry']\n\n\nlist\n\n\n\n*x, y = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\n\n['Orange', 'Banana']\nCherry"
+    "objectID": "01_Programming_in_python/03-Modules.html#commonly-used-built-in-already-downloaded-modules",
+    "href": "01_Programming_in_python/03-Modules.html#commonly-used-built-in-already-downloaded-modules",
+    "title": "Modules",
+    "section": "Commonly Used Built-in (Already Downloaded) Modules",
+    "text": "Commonly Used Built-in (Already Downloaded) Modules\n\nmath\n\nMath constants (pi, e, etc.)\nFunctions commonly used functions (exp(), sin(), sqrt(), etc.)\n\nrandom\n\nRandom sampling and random number generation\n\nstatistics\n\nSummary stats (but scipy and pandas have a lot more)\n\ndatetime\n\nFunctionality for working with dates",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable",
-    "title": "Basic Use of Python",
-    "section": "_ Variable",
-    "text": "_ Variable\nWhen doing python interactively (as with a JupyterLab notebook), the last evaluated expression is assigned to the variable _. This carries across code cells.\n\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nx\n\n'Orange'\n\n\n\n_\n\n'Orange'\n\n\n\nx\n\n'Orange'\n\n\n\n#print doesn't count toward the _!\nprint(y)\n\nBanana\n\n\n\n_\n\n'Orange'\n\n\n\ny\n\n'Banana'\n\n\n\n_\n\n'Banana'\n\n\nWe’ll use this _ operator when doing computations where we don’t need to save things. For instance,\n\ndegrees_celcius = 100\n(9 / 5) * degrees_celcius + 32\n\n\n_ - 10\n\n\n(9 / 5) * degrees_celcius + 32 - 10\n\n\n_ * 10\n\n\nsum_numbers = 0\n#no need to create a variable for the index\nfor _ in range(1,101):\n  sum_numbers += _\nsum_numbers\n\n5050"
+    "objectID": "01_Programming_in_python/03-Modules.html#importing-a-module",
+    "href": "01_Programming_in_python/03-Modules.html#importing-a-module",
+    "title": "Modules",
+    "section": "Importing a Module",
+    "text": "Importing a Module\n\nFor built-in modules, we can load them into our session with import\n\n\nimport math\ntype(math)\n\nmodule\n\n\n\nCan see the functionality using help()\n\n\nhelp(math)\n\nHelp on built-in module math:\n\nNAME\n    math\n\nDESCRIPTION\n    This module provides access to the mathematical functions\n    defined by the C standard.\n\nFUNCTIONS\n    acos(x, /)\n        Return the arc cosine (measured in radians) of x.\n        \n        The result is between 0 and pi.\n    \n    acosh(x, /)\n        Return the inverse hyperbolic cosine of x.\n    \n    asin(x, /)\n        Return the arc sine (measured in radians) of x.\n        \n        The result is between -pi/2 and pi/2.\n    \n    asinh(x, /)\n        Return the inverse hyperbolic sine of x.\n    \n    atan(x, /)\n        Return the arc tangent (measured in radians) of x.\n        \n        The result is between -pi/2 and pi/2.\n    \n    atan2(y, x, /)\n        Return the arc tangent (measured in radians) of y/x.\n        \n        Unlike atan(y/x), the signs of both x and y are considered.\n    \n    atanh(x, /)\n        Return the inverse hyperbolic tangent of x.\n    \n    ceil(x, /)\n        Return the ceiling of x as an Integral.\n        \n        This is the smallest integer &gt;= x.\n    \n    comb(n, k, /)\n        Number of ways to choose k items from n items without repetition and without order.\n        \n        Evaluates to n! / (k! * (n - k)!) when k &lt;= n and evaluates\n        to zero when k &gt; n.\n        \n        Also called the binomial coefficient because it is equivalent\n        to the coefficient of k-th term in polynomial expansion of the\n        expression (1 + x)**n.\n        \n        Raises TypeError if either of the arguments are not integers.\n        Raises ValueError if either of the arguments are negative.\n    \n    copysign(x, y, /)\n        Return a float with the magnitude (absolute value) of x but the sign of y.\n        \n        On platforms that support signed zeros, copysign(1.0, -0.0)\n        returns -1.0.\n    \n    cos(x, /)\n        Return the cosine of x (measured in radians).\n    \n    cosh(x, /)\n        Return the hyperbolic cosine of x.\n    \n    degrees(x, /)\n        Convert angle x from radians to degrees.\n    \n    dist(p, q, /)\n        Return the Euclidean distance between two points p and q.\n        \n        The points should be specified as sequences (or iterables) of\n        coordinates.  Both inputs must have the same dimension.\n        \n        Roughly equivalent to:\n            sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))\n    \n    erf(x, /)\n        Error function at x.\n    \n    erfc(x, /)\n        Complementary error function at x.\n    \n    exp(x, /)\n        Return e raised to the power of x.\n    \n    expm1(x, /)\n        Return exp(x)-1.\n        \n        This function avoids the loss of precision involved in the direct evaluation of exp(x)-1 for small x.\n    \n    fabs(x, /)\n        Return the absolute value of the float x.\n    \n    factorial(x, /)\n        Find x!.\n        \n        Raise a ValueError if x is negative or non-integral.\n    \n    floor(x, /)\n        Return the floor of x as an Integral.\n        \n        This is the largest integer &lt;= x.\n    \n    fmod(x, y, /)\n        Return fmod(x, y), according to platform C.\n        \n        x % y may differ.\n    \n    frexp(x, /)\n        Return the mantissa and exponent of x, as pair (m, e).\n        \n        m is a float and e is an int, such that x = m * 2.**e.\n        If x is 0, m and e are both 0.  Else 0.5 &lt;= abs(m) &lt; 1.0.\n    \n    fsum(seq, /)\n        Return an accurate floating point sum of values in the iterable seq.\n        \n        Assumes IEEE-754 floating point arithmetic.\n    \n    gamma(x, /)\n        Gamma function at x.\n    \n    gcd(*integers)\n        Greatest Common Divisor.\n    \n    hypot(...)\n        hypot(*coordinates) -&gt; value\n        \n        Multidimensional Euclidean distance from the origin to a point.\n        \n        Roughly equivalent to:\n            sqrt(sum(x**2 for x in coordinates))\n        \n        For a two dimensional point (x, y), gives the hypotenuse\n        using the Pythagorean theorem:  sqrt(x*x + y*y).\n        \n        For example, the hypotenuse of a 3/4/5 right triangle is:\n        \n            &gt;&gt;&gt; hypot(3.0, 4.0)\n            5.0\n    \n    isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)\n        Determine whether two floating point numbers are close in value.\n        \n          rel_tol\n            maximum difference for being considered \"close\", relative to the\n            magnitude of the input values\n          abs_tol\n            maximum difference for being considered \"close\", regardless of the\n            magnitude of the input values\n        \n        Return True if a is close in value to b, and False otherwise.\n        \n        For the values to be considered close, the difference between them\n        must be smaller than at least one of the tolerances.\n        \n        -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That\n        is, NaN is not close to anything, even itself.  inf and -inf are\n        only close to themselves.\n    \n    isfinite(x, /)\n        Return True if x is neither an infinity nor a NaN, and False otherwise.\n    \n    isinf(x, /)\n        Return True if x is a positive or negative infinity, and False otherwise.\n    \n    isnan(x, /)\n        Return True if x is a NaN (not a number), and False otherwise.\n    \n    isqrt(n, /)\n        Return the integer part of the square root of the input.\n    \n    lcm(*integers)\n        Least Common Multiple.\n    \n    ldexp(x, i, /)\n        Return x * (2**i).\n        \n        This is essentially the inverse of frexp().\n    \n    lgamma(x, /)\n        Natural logarithm of absolute value of Gamma function at x.\n    \n    log(...)\n        log(x, [base=math.e])\n        Return the logarithm of x to the given base.\n        \n        If the base not specified, returns the natural logarithm (base e) of x.\n    \n    log10(x, /)\n        Return the base 10 logarithm of x.\n    \n    log1p(x, /)\n        Return the natural logarithm of 1+x (base e).\n        \n        The result is computed in a way which is accurate for x near zero.\n    \n    log2(x, /)\n        Return the base 2 logarithm of x.\n    \n    modf(x, /)\n        Return the fractional and integer parts of x.\n        \n        Both results carry the sign of x and are floats.\n    \n    nextafter(x, y, /)\n        Return the next floating-point value after x towards y.\n    \n    perm(n, k=None, /)\n        Number of ways to choose k items from n items without repetition and with order.\n        \n        Evaluates to n! / (n - k)! when k &lt;= n and evaluates\n        to zero when k &gt; n.\n        \n        If k is not specified or is None, then k defaults to n\n        and the function returns n!.\n        \n        Raises TypeError if either of the arguments are not integers.\n        Raises ValueError if either of the arguments are negative.\n    \n    pow(x, y, /)\n        Return x**y (x to the power of y).\n    \n    prod(iterable, /, *, start=1)\n        Calculate the product of all the elements in the input iterable.\n        \n        The default start value for the product is 1.\n        \n        When the iterable is empty, return the start value.  This function is\n        intended specifically for use with numeric values and may reject\n        non-numeric types.\n    \n    radians(x, /)\n        Convert angle x from degrees to radians.\n    \n    remainder(x, y, /)\n        Difference between x and the closest integer multiple of y.\n        \n        Return x - n*y where n*y is the closest integer multiple of y.\n        In the case where x is exactly halfway between two multiples of\n        y, the nearest even value of n is used. The result is always exact.\n    \n    sin(x, /)\n        Return the sine of x (measured in radians).\n    \n    sinh(x, /)\n        Return the hyperbolic sine of x.\n    \n    sqrt(x, /)\n        Return the square root of x.\n    \n    tan(x, /)\n        Return the tangent of x (measured in radians).\n    \n    tanh(x, /)\n        Return the hyperbolic tangent of x.\n    \n    trunc(x, /)\n        Truncates the Real x to the nearest Integral toward 0.\n        \n        Uses the __trunc__ magic method.\n    \n    ulp(x, /)\n        Return the value of the least significant bit of the float x.\n\nDATA\n    e = 2.718281828459045\n    inf = inf\n    nan = nan\n    pi = 3.141592653589793\n    tau = 6.283185307179586\n\nFILE\n    (built-in)\n\n\n\n\n\n\nUsing Modules Function/Objects\n\nFunctions cannot be called as a built-in function:\n\n\nsqrt(9)\n\n\nMust use the module prefix:\n\n\nimport math\nmath.sqrt(9)\nmath.factorial(5)\n\n\nMath Module Functions\n\nmath module allows for common statistical computations\n\n\\[\nf(1;\\mu = 0, \\sigma = 1) = \\frac{1}{\\sqrt{2\\pi}}\\exp^{-\\frac{1}{2}(1 - 0)^2}\n\\]\n\nThis Normal distribution PDF expression can be evaluated using:\n\n\n(1.0/math.sqrt(2*math.pi))*math.exp(-0.5*(1 - 0.0)**2)",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#copying-vs-referencing",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#copying-vs-referencing",
-    "title": "Basic Use of Python",
-    "section": "Copying vs Referencing",
-    "text": "Copying vs Referencing\nCareful when modifying elements of a compound object: ‘assignment statements do not copy objects, they create bindings between a target (a spot in computer memory) and an object’!\nIf you come from R, this is a very different behavior!\n\n#Changing the original modifies both variables\nx = [1, 2, 3, \"Cats Rule!\"] #create a 'list' of four values\ny = x                       #Make y an alias for x (reference the same memory)\nprint(x, y)\n\n[1, 2, 3, 'Cats Rule!'] [1, 2, 3, 'Cats Rule!']\n\n\n\nx[3] = \"Dogs rule!\" #note that this modifies y!\nprint(x, y)\n\n[1, 2, 3, 'Dogs rule!'] [1, 2, 3, 'Dogs rule!']\n\n\n\nIf you want to avoid this behavior, you can create a copy of the object instead of a reference\n\n\n#Can create a (shallow) copy of the object rather than point to the same object in memory\ny = x.copy()\nx[2] = 10\nx[3]= \"No cats rule!\"\nprint(x, y)\n\n[1, 2, 10, 'No cats rule!'] [1, 2, 3, 'Cats Rule!']"
+    "objectID": "01_Programming_in_python/03-Modules.html#module-variables",
+    "href": "01_Programming_in_python/03-Modules.html#module-variables",
+    "title": "Modules",
+    "section": "Module Variables",
+    "text": "Module Variables\nModules can contain more than functions\n\nmath module also defines variables like e and pi\n\n\nimport math\nmath.e\nmath.pi\nradius = 5\nprint('The area is', math.pi * radius ** 2)\n\nThe area is 78.53981633974483\n\n\n\nYou can overwrite these values (just like built-in objects) but, you know, don’t do that!\n\n\n\nRandom Module\n\nWe’ll deal with random sampling from time to time\n\nrandom module gives functionality to do so (although we’ll use other modules later)\n\n\nimport random\nhelp(random)\n\n\nSet a ‘seed’ for reproducibility and obtain some random observations between 0 and 1\n\nA seed sets a starting point for the ‘random’ number generator. This allows you to get the same ‘random’ numbers the next time you run the code.\n\n\n\nimport random\nrandom.seed(101)\nprint(random.random())\nprint(random.random())\nprint(random.random())\nrandom.seed(101)\nprint(random.random())\n\n0.5811521325045647\n0.1947544955341367\n0.9652511070611112\n0.5811521325045647\n\n\n\nObtain random integers between 10 and 25\n\n\nrandom.sample(range(10, 25), 4)\n\n[13, 18, 15, 17]",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable-names",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#variable-names",
-    "title": "Basic Use of Python",
-    "section": "Variable Names",
-    "text": "Variable Names\nVariable names can use letters, digits, and the underscore symbol (but cannot start with a digit)\nOk variable names:\n\nX, species5618, and degrees_celsius\n\nBad variable names:\n\n777 (begins with a digit)\nno-way! (includes punctuation)"
+    "objectID": "01_Programming_in_python/03-Modules.html#importing-as",
+    "href": "01_Programming_in_python/03-Modules.html#importing-as",
+    "title": "Modules",
+    "section": "Importing as",
+    "text": "Importing as\n\nCan import with a different name for brevity\n\n\nimport random as ran\nran.seed(101)\nprint(ran.random())\nprint(ran.random())\nprint(ran.random())\n\n0.5811521325045647\n0.1947544955341367\n0.9652511070611112\n\n\n\nObtain random integers between 11 and 26\n\n\nran.sample(range(11, 26), 4)",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#augmented-assignment",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#augmented-assignment",
-    "title": "Basic Use of Python",
-    "section": "Augmented Assignment",
-    "text": "Augmented Assignment\nPython has lots of shorthand notation!\n\nQuite often we want to take a value, add to it, and replace the old value\n\n\nwinnings = 100\nwinnings = winnings + 20\nwinnings\n\n120\n\n\n\n‘Augmented assignment’ gives a shorthand\n\n\nwinnings = 100\nwinnings += 20\nwinnings\n\n120\n\n\n\nThis works for all operators except negation\n\n\nwinnings\nwinnings -= 30\nwinnings\n\n\nwinnings *= 40\nwinnings\n\n\nwinnings **= 1/2\nwinnings\n\n\nAugmented Assignment Execution\nExecuted in the following way:\n\nEvaluate the expression on the right of the = sign to produce a value\nApply the operator to the variable on the left and the value produced\nStore this new value in the memory address of the variable on the left of the =.\n\nThis means the operator is applied after the expression on the right is evaluated.\n\nwinnings = 100\nwinnings += 100*10\nwinnings"
+    "objectID": "01_Programming_in_python/03-Modules.html#selective-import",
+    "href": "01_Programming_in_python/03-Modules.html#selective-import",
+    "title": "Modules",
+    "section": "Selective Import",
+    "text": "Selective Import\n\nCan also selectively import functions and variables from a module\n\n\nfrom math import sqrt, pi\nsqrt(9)\npi\n\n\nOr import everything from a module into the current namespace. Be careful with this as you can overwrite things!\n\n\nfrom math import *\n\n\nIf you intend to use a function often you can assign it to a local name\n\n\nsample = random.random\nsample()",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#continuing-a-line-of-code",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#continuing-a-line-of-code",
-    "title": "Basic Use of Python",
-    "section": "Continuing a Line of Code",
-    "text": "Continuing a Line of Code\n\nFor long lines of code, we can break the code across multiple lines using \\ or by wrapping the code in ()\n\n\n10 + 20 - 100 * 60 \\\n/ 20\n\n-270.0\n\n\n\n(10 + 20 - 100 * 60\n/20)\n\n-270.0"
+    "objectID": "01_Programming_in_python/03-Modules.html#installing-modules",
+    "href": "01_Programming_in_python/03-Modules.html#installing-modules",
+    "title": "Modules",
+    "section": "Installing Modules",
+    "text": "Installing Modules\n\npip is a package manager for python\nUsed through the command line usually\nWe’ll use it through a code cell with ! first\n\nCan see what modules you have\n\npip list\n\nUse pip install module_name to install new modules\n\npip install scipy\n\nColab has most everything we need for now but we’ll need to do some installing later in the course.\n\n! pip list",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Modules"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#functions-methods",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#functions-methods",
-    "title": "Basic Use of Python",
-    "section": "Functions & Methods",
-    "text": "Functions & Methods\nTwo major ways to do an operation on a variable/object:\n\nFunctions: function_name(myvar, other_args)\nMethods: myvar.method(other_args)\n\n\nmyList = [1, 10, 100, 1000]\n#len function\nlen(myList)\n\n4\n\n\n\n#max function\nmax(myList)\n\n1000\n\n\n\n#pop method\nmyList.pop(3)\n\n1000\n\n\n\nmyList\n\n[1, 10, 100]\n\n\n\nmyList.append(100000)\nmyList\n\n[1, 10, 100, 100000]"
+    "objectID": "01_Programming_in_python/01-Course_Goals_Landing.html",
+    "href": "01_Programming_in_python/01-Course_Goals_Landing.html",
+    "title": "Course Goals",
+    "section": "",
+    "text": "The video below discusses the course goals.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Course Goals"
+    ]
   },
   {
-    "objectID": "01_Programming_in_python/02_Basic_Use_Of_Python.html#video-demo",
-    "href": "01_Programming_in_python/02_Basic_Use_Of_Python.html#video-demo",
-    "title": "Basic Use of Python",
-    "section": "Video Demo",
-    "text": "Video Demo\nThis quick video shows how to open a new Google Colab notebook and run some basic python code. I’d pop the video out into the panopto player using the arrow icon in the bottom right.\n\nfrom IPython.display import IFrame\nIFrame(src = 'https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=bae161a8-bac0-4c44-a7a1-b0ef0163e90d&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all', width = '620', height = '380')"
+    "objectID": "01_Programming_in_python/01-Course_Goals_Landing.html#notes",
+    "href": "01_Programming_in_python/01-Course_Goals_Landing.html#notes",
+    "title": "Course Goals",
+    "section": "Notes",
+    "text": "Notes\n\nHTML version\nPDF version\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Course Goals"
+    ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ST-554-Big-Data-with-Python",
+    "title": "Analysis of Big Data",
     "section": "",
-    "text": "Website for course…\nLinks exist? somewhere?"
+    "text": "Welcome to ST 554 - Analysis of Big Data (with python)\nIn this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:\nVolume, Variety, Velocity, Veracity (Variability), and Value\nThe course is split into four topics\nUsing python as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use pyspark as our interface to the Spark software, which is commonly used to handle big data.",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
+  },
+  {
+    "objectID": "index.html#course-learning-outcomes",
+    "href": "index.html#course-learning-outcomes",
+    "title": "Analysis of Big Data",
+    "section": "Course Learning Outcomes",
+    "text": "Course Learning Outcomes\nAt the end of this course students will be able to\n\nexplain the steps and purpose of python programs (CO 1)\nefficiently read in, combine, and manipulate data in python (CO 2)\nutilize help and other resources to customize programs (CO 3)\nwrite programs using good programming practices (CO 4)\nexplore, manage, and solve common common problems with big data (CO 5)",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
+  },
+  {
+    "objectID": "index.html#weekly-to-do-list",
+    "href": "index.html#weekly-to-do-list",
+    "title": "Analysis of Big Data",
+    "section": "Weekly To-do List",
+    "text": "Weekly To-do List\nGenerally speaking, each week will have a few videos to watch and readings to do as well as corresponding homework assignments (see the syllabus on Moodle for homework policies).\n\nThere will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.\nThere will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment.",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
+  },
+  {
+    "objectID": "index.html#getting-help",
+    "href": "index.html#getting-help",
+    "title": "Analysis of Big Data",
+    "section": "Getting Help!",
+    "text": "Getting Help!\nTo obtain course help there are a number of options:\n\nDiscussion Forum on Moodle - This should be used for any question you feel comfortable asking and having others view. The TA, other students, and I will answer questions on this board. This will be the fastest way to receive a response!\n\nE-mail - If there is a question that you don’t feel comfortable asking the whole class you can use e-mail. The TA and I will be checking daily (during the regular work week).\nZoom Office Hour Sessions - These sessions can be used to share screens and have multiple users. You can do text chat, voice, and video. They are great for a class like this!",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
+  },
+  {
+    "objectID": "index.html#spring-2025-course-schedule",
+    "href": "index.html#spring-2025-course-schedule",
+    "title": "Analysis of Big Data",
+    "section": "Spring 2025 Course Schedule",
+    "text": "Spring 2025 Course Schedule\n\n\n\n\n\n\n\n\nTopic/Week\nLearning Materials\nAssignments\n\n\n\n\nWeek 1\n1/6-1/10\nRead - Week 1 Overview\n01 - Course Goals\n02 - Basic Use of Python\n03 - Modules\n04 - JupyterLab Notebooks & Markdown\n05 - List Basics and Strings\n06 - Numeric Types and Booleans\n07 - Common Uses for Data\nHW 1 due W, 1/15\n\n\nWeek 2\n1/13-1/17\n08 - User Defined Functions\n09 - Control Flow\n10 - Lists and Tuples\n11 - Dictionaries\n12 - Numpy\n13 - Exploratory Data Analysis Concepts\nHW 2 due W, 1/22\n\n\nWeek 3\n1/21-1/24 (Off M)\n14 - Pandas Series\n15 - Pandas DataFrames\n16 - Pandas for Reading Data\n17 - Numeric Summaries\nHW 3 due W, 1/29\n\n\nWeek 4\n1/27-1/31\n18 - More Function Writing\n19 - Plotting with Matplotlib\n20 - Plotting with pandas\n21 - Error Handling\nHW 4 due W, 2/5\n\n\nWeek 5\n2/3-2/7\n22 - Big Recap!\n23 - Fitting and Evaluating SLR Models\n24 - Prediction and Training/Test Set Ideas\n25 - Cross-Validation\n26 - Multiple Linear Regression\n27 - LASSO\nExam 1 Th/F 2/6-2/7 - covers weeks 1-4\nProject 1 due W, 2/19\n\n\nWeek 6\n2/10-2/14 (Off T)\nNo new material. Project work time!\n\n\n\nWeek 7\n2/17-2/21\n28 - Big Data Concepts\n29 - Bias and Other Issues with Big Data\n30 - SQL Basics\n31 - SQL Joins\n32 - SQL Readings\nHW 5 due W, 2/26\n\n\nWeek 8\n2/24-2/28\n33 - Data Flow, Data Warehouses, and Data Lakes\n34 - HDFS\nHW 6 due W, 3/5\n\n\nWeek 9\n3/3-3/7\n35 - Connecting to our JupyterHub Environment\n35 - Spark for Dealing with Big Data\n36 - pyspark: RDDs\n37 - pyspark: pandas-on-Spark\n38 - pyspark: Spark SQL\nProject 2 due W, 3/19\n\n\nWeek 10\n3/10-3/14\nNo new material - spring break\n\n\n\nWeek 11\n3/17-3/21\n39 - Modeling Recap\n40 - Modeling Example\n41 - Logistic Regression Basics\n42 - Logistic Regression Extensions\n43 - Regularized Regression\nHW 7 due W, 3/26\n\n\nWeek 12\n3/24-3/28\n44 - Loss Functions & Model Performance\n45 - Classification & Regression Trees\n46 - Bagging Trees & Random Forests\nHW 8 due W, 4/2\n\n\nWeek 13\n3/31-4/4\n47 - Spark MLlib Basics\n48 - Model Pipelines in MLlib\n49 - MLflow\n50 - MLOps\nHW 9 due W, 4/9\n\n\nWeek 14\n4/7-4/11\n51 - Streaming Data Concepts\n52 - Basic Summaries on Streaming Data\n53 - Preprocessing, Sending Alerts, & Combining Streams\nExam 2 Th/F 4/10-4/11 - covers weeks 1-13\n(emphasis on 5-13)\n\n\nWeek 15\n4/14-4/18\n54 - Spark Structured Streaming\n55 - Reading & Writing Streams with Spark Structured Streaming\n56 - Transformations, Windowing, & Aggregations\n57 - Streaming Joins\nFinal Project due M, 4/28\n\n\nWeek 16\n4/21-4/22\nNo new material.",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
   },
   {
     "objectID": "about.html",
@@ -96,5 +204,245 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html",
+    "title": "Basic Use of Python",
+    "section": "",
+    "text": "Justin Post (Some notes modified from Dr. Eric Chi)\nIn preparation for dealing with big data we need to learn a programming language and figure out a good coding environment. We’ll learn python and code in Google Colab/JupyterLab.\nWe choose python due to its popularity and the ease of programming in spark through pyspark.\nWe use JupyterLab as it is a widely used software for creating python notebooks. Google Colab is built on JupyterLab!",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#getting-started",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#getting-started",
+    "title": "Basic Use of Python",
+    "section": "Getting Started",
+    "text": "Getting Started\nWhen you open a new notebook in colab by default it will use python to run any ‘code cells’ (this can be changed in the ‘notebook settings’ under the View -&gt; ‘Notebook info’ menu).\nThere are two types of cells: - Code cells: allow you to submit code - Text cells: allow you to write text using ‘markdown’ (we’ll learn more about that shortly!)\nThese can be added in the top left of the notebook (+ Code and + Text). Below is a python code cell. These can be run by clicking ‘shift-enter’ when in the cell.\n\n#A comment - this text is not evaluated\n5 + 6\n10 * 2\n5**2\n\n25\n\n\n\nOnly the last bit of code is ‘printed’ unless you specifically print it. We’ll do this much of the time with print() function.\n\n\n# % is mod, // is floor\nprint(10 / 3)\nprint(10 % 3)\nprint(10 // 3)\n\n3.3333333333333335\n1\n3\n\n\n\nOperators are applied left to right, except for exponentiation\n\n\n3 + 4 - 5\n\n2\n\n\n\n(3 + 4) - 5\n\n2\n\n\n\n3**2**4\n\n43046721\n\n\n\n#interpreted this way\n3**(2**4)\n\n43046721\n\n\n\n#not this\n(3**2)**4\n\n6561",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#creating-variables",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#creating-variables",
+    "title": "Basic Use of Python",
+    "section": "Creating Variables",
+    "text": "Creating Variables\nYou can assign variables to reference an object using =\n\nx = \"Hello! \"\ny = 'How are you?'\nprint(x)\nprint(x + y)\n\nHello! \nHello! How are you?\n\n\n\nStrings are automatically concatenated using the + operator. As with most programming languages, there are special characters like \\ which indicate something. For instance, \\n is a line break. These appear differently depending on if you print something or just view the object.\n\n\nx = \"Hello! \\n\"\ny = 'Then I asked, \"How are you?\"'\nx\n\n'Hello! \\n'\n\n\n\nprint(x)\n\nHello! \n\n\n\n\nx + y\n\n'Hello! \\nThen I asked, \"How are you?\"'\n\n\n\nprint(x + y)\n\nHello! \nThen I asked, \"How are you?\"\n\n\n\nVariables can be used to simplify and generalize your code\n\n\ndegrees_celsius = 26.0\nprint(9 / 5 * degrees_celsius + 32)\ndegrees_celsius = 100\nprint(9 / 5 * degrees_celsius + 32)\n\n78.80000000000001\n212.0",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#object-types",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#object-types",
+    "title": "Basic Use of Python",
+    "section": "Object Types",
+    "text": "Object Types\nThere are a number of built-in objects you can create. Some important ones are listed below:\n\nText Type: str\n\n\ny = \"text string\"\ntype(y)\n\n\nNumeric Types: int, float\n\n\ny = 10\ntype(y)\nx = 10.4\ntype(x)\n\n\nBoolean Type: bool\n\n\ny = True\ntype(y)\n\n\nSequence Types: list, tuple\n\n\nz = [10, \"a\", 11.5, True]\ntype(z)\n\n\nMapping Type: dict\n\n\nw = {\"key1\": \"value1\",\n     \"key2\": [\"value2\", 10]}\ntype(w)",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#multiple-assignment",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#multiple-assignment",
+    "title": "Basic Use of Python",
+    "section": "Multiple Assignment",
+    "text": "Multiple Assignment\n\nAssigning multiple variables on one line is easy\n\n\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\nprint(z)\n\n\nx = y = z = \"Orange\"\nprint(x)\nprint(y)\n\nThe use of * can allow you to ‘pack’ the remaining values into one object. Placement of the * is important here!\n\nx, *y = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\ntype(y)\n\nOrange\n['Banana', 'Cherry']\n\n\nlist\n\n\n\n*x, y = \"Orange\", \"Banana\", \"Cherry\"\nprint(x)\nprint(y)\n\n['Orange', 'Banana']\nCherry",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#variable",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#variable",
+    "title": "Basic Use of Python",
+    "section": "_ Variable",
+    "text": "_ Variable\nWhen doing python interactively (as with a JupyterLab notebook), the last evaluated expression is assigned to the variable _. This carries across code cells.\n\nx, y, z = \"Orange\", \"Banana\", \"Cherry\"\nx\n\n'Orange'\n\n\n\n_\n\n'Orange'\n\n\n\nx\n\n'Orange'\n\n\n\n#print doesn't count toward the _!\nprint(y)\n\nBanana\n\n\n\n_\n\n'Orange'\n\n\n\ny\n\n'Banana'\n\n\n\n_\n\n'Banana'\n\n\nWe’ll use this _ operator when doing computations where we don’t need to save things. For instance,\n\ndegrees_celcius = 100\n(9 / 5) * degrees_celcius + 32\n\n\n_ - 10\n\n\n(9 / 5) * degrees_celcius + 32 - 10\n\n\n_ * 10\n\n\nsum_numbers = 0\n#no need to create a variable for the index\nfor _ in range(1,101):\n  sum_numbers += _\nsum_numbers\n\n5050",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#copying-vs-referencing",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#copying-vs-referencing",
+    "title": "Basic Use of Python",
+    "section": "Copying vs Referencing",
+    "text": "Copying vs Referencing\nCareful when modifying elements of a compound object: ‘assignment statements do not copy objects, they create bindings between a target (a spot in computer memory) and an object’!\nIf you come from R, this is a very different behavior!\n\n#Changing the original modifies both variables\nx = [1, 2, 3, \"Cats Rule!\"] #create a 'list' of four values\ny = x                       #Make y an alias for x (reference the same memory)\nprint(x, y)\n\n[1, 2, 3, 'Cats Rule!'] [1, 2, 3, 'Cats Rule!']\n\n\n\nx[3] = \"Dogs rule!\" #note that this modifies y!\nprint(x, y)\n\n[1, 2, 3, 'Dogs rule!'] [1, 2, 3, 'Dogs rule!']\n\n\n\nIf you want to avoid this behavior, you can create a copy of the object instead of a reference\n\n\n#Can create a (shallow) copy of the object rather than point to the same object in memory\ny = x.copy()\nx[2] = 10\nx[3]= \"No cats rule!\"\nprint(x, y)\n\n[1, 2, 10, 'No cats rule!'] [1, 2, 3, 'Cats Rule!']",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#variable-names",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#variable-names",
+    "title": "Basic Use of Python",
+    "section": "Variable Names",
+    "text": "Variable Names\nVariable names can use letters, digits, and the underscore symbol (but cannot start with a digit)\nOk variable names:\n\nX, species5618, and degrees_celsius\n\nBad variable names:\n\n777 (begins with a digit)\nno-way! (includes punctuation)",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#augmented-assignment",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#augmented-assignment",
+    "title": "Basic Use of Python",
+    "section": "Augmented Assignment",
+    "text": "Augmented Assignment\nPython has lots of shorthand notation!\n\nQuite often we want to take a value, add to it, and replace the old value\n\n\nwinnings = 100\nwinnings = winnings + 20\nwinnings\n\n120\n\n\n\n‘Augmented assignment’ gives a shorthand\n\n\nwinnings = 100\nwinnings += 20\nwinnings\n\n120\n\n\n\nThis works for all operators except negation\n\n\nwinnings\nwinnings -= 30\nwinnings\n\n\nwinnings *= 40\nwinnings\n\n\nwinnings **= 1/2\nwinnings\n\n\nAugmented Assignment Execution\nExecuted in the following way:\n\nEvaluate the expression on the right of the = sign to produce a value\nApply the operator to the variable on the left and the value produced\nStore this new value in the memory address of the variable on the left of the =.\n\nThis means the operator is applied after the expression on the right is evaluated.\n\nwinnings = 100\nwinnings += 100*10\nwinnings",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#continuing-a-line-of-code",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#continuing-a-line-of-code",
+    "title": "Basic Use of Python",
+    "section": "Continuing a Line of Code",
+    "text": "Continuing a Line of Code\n\nFor long lines of code, we can break the code across multiple lines using \\ or by wrapping the code in ()\n\n\n10 + 20 - 100 * 60 \\\n/ 20\n\n-270.0\n\n\n\n(10 + 20 - 100 * 60\n/20)\n\n-270.0",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#functions-methods",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#functions-methods",
+    "title": "Basic Use of Python",
+    "section": "Functions & Methods",
+    "text": "Functions & Methods\nTwo major ways to do an operation on a variable/object:\n\nFunctions: function_name(myvar, other_args)\nMethods: myvar.method(other_args)\n\n\nmyList = [1, 10, 100, 1000]\n#len function\nlen(myList)\n\n4\n\n\n\n#max function\nmax(myList)\n\n1000\n\n\n\n#pop method\nmyList.pop(3)\n\n1000\n\n\n\nmyList\n\n[1, 10, 100]\n\n\n\nmyList.append(100000)\nmyList\n\n[1, 10, 100, 100000]",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#video-demo",
+    "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#video-demo",
+    "title": "Basic Use of Python",
+    "section": "Video Demo",
+    "text": "Video Demo\nThis quick video shows how to open a new Google Colab notebook and run some basic python code. I’d pop the video out into the panopto player using the arrow icon in the bottom right.\n\nfrom IPython.display import IFrame\nIFrame(src = 'https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=bae161a8-bac0-4c44-a7a1-b0ef0163e90d&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all', width = '620', height = '380')",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Basic Use of Python"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "",
+    "text": "Justin Post\nNext up, we look at two basic built-in data types: numeric types and booleans\nAs with lists and strings, we’ll go through and look at how to create them, common methods and functions, and look at some examples along the way.\nOnce we’re through this part, we’re ready to start thinking about compound data types (other than lists) and how we might store and summarize data. For dealing wtih data, we’ll look at two common python modules and their data types:",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#ints-floats",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#ints-floats",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "Ints & Floats",
+    "text": "Ints & Floats\n\n(Real) Numbers stored as int or float\n\nPython generally figures out which to use\n\n\n\nx = 10\ntype(x)\n\nint\n\n\n\ny = 10.4\ntype(y)\n\nfloat\n\n\n\nz = y - 0.4\nprint(z)\ntype(z)\n\n10.0\n\n\nfloat\n\n\n\nYou can cast things (or explicitly coerce them) using int() and float()\n\n\nx = 10\nprint(type(x))\nx\n\n&lt;class 'int'&gt;\n\n\n10\n\n\n\nx = float(x)\nprint(type(x))\nx\n\n&lt;class 'float'&gt;\n\n\n10.0\n\n\n\nint(10.5)\n\n10",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#functions-operators",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#functions-operators",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "Functions & Operators",
+    "text": "Functions & Operators\n\nWe have all the numeric operators discussed previously and a few handy functions built in\n\n\n#floor\n100 // 3\n\n33\n\n\n\n#modulus\n100 % 3\n\n1\n\n\n\n#floor and modulus\ndivmod(100, 3) #returns a 'tuple' (a sort of immutable list)\n\n(33, 1)\n\n\n\n#raise to a power 4^3\npow(4, 3)\n\n64\n\n\n\n#equivalent to\n4 ** 3\n\n64\n\n\n\nabs(-100)\n\n100\n\n\n\nround(10.4242, 2)\n\n10.42\n\n\n\nmath module\n\nmath module has a number of useful functions\nRecall we can import the math module to gain access to its functions. We then preface functions/objects from the module with math.\n\n\nx = 10.55\n#a boolean function (more on this shortly)\nx.is_integer()\n\nFalse\n\n\n\nimport math\nmath.floor(x)\n\n10\n\n\n\nmath.ceil(x)\n\n11\n\n\n\nmath.factorial(10)\n\n3628800",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#things-to-be-aware-of",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#things-to-be-aware-of",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "Things To Be Aware Of",
+    "text": "Things To Be Aware Of\nFloats are not stored precisely!\n\n1.2-1.0\n\n0.19999999999999996\n\n\n\nComes from binary representation of floats\nNot worth getting into, but if you see something weird like this, that is why!\nMore info here",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#things-to-noteremember",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#things-to-noteremember",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "Things to Note/Remember",
+    "text": "Things to Note/Remember\n\nAugmented assignment operators\n\n\nx = 100\nx += 200\nx\n\n300\n\n\n\nMultiple assignment\n\n\nx = y = z = 40\nprint(x, y)\n\n40 40\n\n\n\nx, y, z = 40, 50, 60\nprint(x, y)\n\n40 50",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#more-formatting-strings",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#more-formatting-strings",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "More Formatting Strings",
+    "text": "More Formatting Strings\n\nCan format strings with numbers inserted as well\n\n\nJob = \"Professor\"\nYears = 10.23\n\"I am a {job} and I've been teaching for {years:d} years\".format(job = Job, years = int(Years))\n\"I am a {job} and I've been teaching for {years:f} years\".format(job = Job, years = Years)\n\"I am a {job} and I've been teaching for {years:.1f} years\".format(job = Job, years = Years)\n\n–\n\nd - Integers\nf - Floating point numbers\n.f - Floating point numbers with a fixed amount of digits to the right of the dot.\n\nActually four different ways to substitute into a string (if you are interested!)",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#booleaninteger-relationship",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#booleaninteger-relationship",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "Boolean/Integer Relationship",
+    "text": "Boolean/Integer Relationship\n\nBooleans are a subtype of integers\n\nTrue treated as 1\nFalse treated as 0\n\n\n\nprint(3 + True, 3 * False)\n\n4 0\n\n\n\n#main thing that differs is when coercing to a string\nprint(str(True), str(False), str(True + 0))\n\nTrue False 1",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
+  },
+  {
+    "objectID": "01_Programming_in_python/06-Numeric_Types_Booleans.html#video-demo",
+    "href": "01_Programming_in_python/06-Numeric_Types_Booleans.html#video-demo",
+    "title": "Numeric Types (Int and Float) & Booleans",
+    "section": "Video Demo",
+    "text": "Video Demo\nThis quick video shows some useful functions from the .math module for dealing with integers, floats, and booleans.\n\nfrom IPython.display import IFrame\nIFrame(src=\"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d59f4288-1a98-446e-a82f-b0f0013e8445&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all\", height=\"405\", width=\"720\")",
+    "crumbs": [
+      "Home",
+      "Learning `python`",
+      "Numeric Types (Int and Float) & Booleans"
+    ]
   }
 ]
