@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-12-17">
+
+<title>ST 554 Analysis of Big Data (with Python)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../01_Programming_in_python/09-Control_Flow.html" rel="next">
+<link href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/08-User_Defined_Functions.html">Course Plan</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of Big Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Learning <code>python</code></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Goals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/02-Basic_Use_Of_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Use of Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/03-Modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modules</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/04-JupyterLab_Notebooks_Markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markdown Capabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/05-List_Basics_Strings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">List Basics &amp; Strings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/06-Numeric_Types_Booleans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numeric Types (Int and Float) &amp; Booleans</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/08-User_Defined_Functions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Course Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/09-Control_Flow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Control Flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/10-Lists_Tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lists and Tuples</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/11-Dictionaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/12-Numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>NumPy</code></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/13-EDA_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/14-Pandas_Series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/15-Pandas_Data_Frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/16-Pandas_For_Reading_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas for Reading Raw Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/17-Numerical_Summaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Summaries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/18-More_Function_Writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More on Writing Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>matplotlib</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/20-Plotting_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>pandas</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Error Handling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Basics of Predictive Modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Uses for Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-plan" id="toc-course-plan" class="nav-link active" data-scroll-target="#course-plan">Course Plan</a></li>
+  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link" data-scroll-target="#user-defined-functions">User Defined Functions</a>
+  <ul class="collapse">
+  <li><a href="#function-creation-syntax" id="toc-function-creation-syntax" class="nav-link" data-scroll-target="#function-creation-syntax">Function Creation Syntax</a></li>
+  <li><a href="#write-our-own-mean-function" id="toc-write-our-own-mean-function" class="nav-link" data-scroll-target="#write-our-own-mean-function">Write Our Own Mean Function</a></li>
+  <li><a href="#add-argument-with-default" id="toc-add-argument-with-default" class="nav-link" data-scroll-target="#add-argument-with-default">Add Argument with Default</a>
+  <ul class="collapse">
+  <li><a href="#modify-the-function-arguments" id="toc-modify-the-function-arguments" class="nav-link" data-scroll-target="#modify-the-function-arguments">Modify the function arguments</a></li>
+  </ul></li>
+  <li><a href="#positional-vs-named-arguments" id="toc-positional-vs-named-arguments" class="nav-link" data-scroll-target="#positional-vs-named-arguments">Positional vs Named Arguments</a></li>
+  <li><a href="#defining-the-type-of-argument" id="toc-defining-the-type-of-argument" class="nav-link" data-scroll-target="#defining-the-type-of-argument">Defining the Type of Argument</a></li>
+  <li><a href="#write-our-own-correlation-function" id="toc-write-our-own-correlation-function" class="nav-link" data-scroll-target="#write-our-own-correlation-function">Write Our Own Correlation Function</a>
+  <ul class="collapse">
+  <li><a href="#plan" id="toc-plan" class="nav-link" data-scroll-target="#plan">Plan</a></li>
+  </ul></li>
+  <li><a href="#other-things-to-note" id="toc-other-things-to-note" class="nav-link" data-scroll-target="#other-things-to-note">Other Things to Note</a></li>
+  <li><a href="#video-demo" id="toc-video-demo" class="nav-link" data-scroll-target="#video-demo">Video Demo</a></li>
+  </ul></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/08-User_Defined_Functions.html">Course Plan</a></li></ol></nav>
+<div class="quarto-title">
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2024-12-17</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/08_User_Defined_Functions.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<section id="course-plan" class="level1">
+<h1>Course Plan</h1>
+<p>Course split into four topics</p>
+<ul>
+<li>Programming in python</li>
+<li>Big Data Management</li>
+<li>Modeling Big Data (with Spark via pyspark)</li>
+<li>Streaming Data</li>
+</ul>
+<p>We’re working through learning how to program in python. We’ve seen - how to program through Google Colab - how to bring in modules - common data types: strings, lists, numeric types (and booleans)</p>
+<p>We’ve also seen a bit about how to think about data. Now, we’ll focus on improving our programs a bit before we get back to handling data.</p>
+</section>
+<section id="user-defined-functions" class="level1">
+<h1>User Defined Functions</h1>
+<p>Justin Post</p>
+<p>In order to get the most out of any programming language, we need to understand how to write our own functions. User-Defined functions allow us to streamline our code, simplify large sections of code, and make our code easier to generalize to other situations.</p>
+<section id="function-creation-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="function-creation-syntax">Function Creation Syntax</h2>
+<ul>
+<li>To create our own functions, we just need to use the keyword <code>def</code>, give a function name with arguments, and then tab in (four spaces) our document body.</li>
+</ul>
+<pre><code>def function_name(arg1, arg2, arg3 = default_arg3):
+    """
+    Documentation string
+    """
+    Function body
+    return object</code></pre>
+<p>Good programming practices indicates we should use a ‘doc-string’ to describe the purpose of the function directly after the function definition. This is usually done with a multi-line comment via triple quotes.</p>
+</section>
+<section id="write-our-own-mean-function" class="level2">
+<h2 class="anchored" data-anchor-id="write-our-own-mean-function">Write Our Own Mean Function</h2>
+<p>We discussed common tasks for data. Of course one was simply describing a data set that we have. One way to describe the center of a variable’s distribution is through the sample mean.</p>
+<ul>
+<li>Given data points labeled as <span class="math inline">\(y_1, y_2, ..., y_n\)</span> (<span class="math inline">\(n\)</span> is the number of observations), the sample mean is</li>
+</ul>
+<p><span class="math display">\[\bar{y}=\frac{1}{n}\sum_{i=1}^{n}y_i\]</span></p>
+<p>Let’s write a function to calculate the mean of a <code>list</code> of numbers using the <code>sum()</code> and <code>len()</code> functions.</p>
+<div id="e83abe21" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s apply our function to a <code>list</code> of numeric values. We can create a sequence of values using the <code>range()</code> function. This function takes two arguments, the starting point and the ending point (which isn’t included).</p>
+<p><code>range()</code> itself is a immutable <em>iterable</em> type object. It isn’t the values themselves but an object that can be used to create the values. In the case of <code>range()</code> it <a href="https://stackoverflow.com/questions/13092267/if-range-is-a-generator-in-python-3-3-why-can-i-not-call-next-on-a-range">can be described as a <em>lazy</em> list</a>.</p>
+<p>One way to get the <code>range()</code> object to create its values is by running <code>list()</code> on it. This tells python to iterate over the <code>range()</code> object and produce the numbers.</p>
+<div id="393334fa" class="cell" data-outputid="17b56bcf-09f5-4727-e64d-e71dda995027">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>seq <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">11</span>) <span class="co">#same as range(11)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>seq <span class="co">#doesn't show values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>range(0, 11)</code></pre>
+</div>
+</div>
+<div id="sLtljCqD-7uc" class="cell" data-outputid="352e9e9f-bd6b-4d77-c9da-9789ae56b712">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(seq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
+</div>
+</div>
+<div id="YEDAWUkFAL4y" class="cell" data-outputid="b97b2f5b-e3e6-4d92-edf2-f2723a651d4a">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>find_mean(<span class="bu">list</span>(seq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>5.0</code></pre>
+</div>
+</div>
+<p>Iterators (and iterator type objects) are often used to save memory as you often don’t need the entire sequence, but do want to use them in some kind of order.</p>
+<hr>
+</section>
+<section id="add-argument-with-default" class="level2">
+<h2 class="anchored" data-anchor-id="add-argument-with-default">Add Argument with Default</h2>
+<p>Often we want to give default arguments to our function. That is, arguments that are used unless the user specifies something else.</p>
+<ul>
+<li>Suppose we want to add in a <strong>trimmed mean</strong> functionality</li>
+<li>This is a mean where we first remove the smallest p% of values and the largest p% of values. We then take the mean of the remaining numbers.</li>
+<li>A trimmed mean is more <strong>robust</strong> to outliers. For instance,</li>
+</ul>
+<div id="Nq6aDj-R-7C8" class="cell" data-outputid="72e1eef5-710b-448c-d615-ae38c8453527">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">100</span>]) <span class="co">#the mean is greatly affected by the large value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>19.166666666666668</code></pre>
+</div>
+</div>
+<div id="wYJFC06Y-6lt" class="cell" data-outputid="cc9321d1-c2c0-4020-fea5-4a4a590bdd8b">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]) <span class="co">#remove the large value to get a better idea about 'most' of the data values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>3.0</code></pre>
+</div>
+</div>
+<p>To create a trimmed mean function (or option at least), we need to do the following:</p>
+<ul>
+<li>Sort the observations</li>
+<li>Remove the lowest p% and highest p%</li>
+<li>Find mean on the remaining values</li>
+</ul>
+<div id="509b168c" class="cell" data-outputid="6fb18303-7b08-49b5-c393-db4efbcfa61c">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can pull in the floor and sqrt functions from math to help us out</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> floor, sqrt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#generate 50 random values from the standard normal distribution</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>).standard_normal(<span class="dv">50</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#convert to a list just so we are working with an object we've studied</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">list</span>(y)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">0</span>:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>[0.345584192064786,
+ 0.8216181435011584,
+ 0.33043707618338714,
+ -1.303157231604361,
+ 0.9053558666731177,
+ 0.4463745723640113,
+ -0.5369532353602852,
+ 0.5811181041963531,
+ 0.36457239618607573,
+ 0.294132496655526]</code></pre>
+</div>
+</div>
+<p>Note that lists have a <code>.sort()</code> method but this modifies the list in place. Instead we can use the <code>sorted()</code> function which returns a new sorted version of the list.</p>
+<div id="eb2af224" class="cell" data-outputid="62aeb907-d215-48bb-e6b2-f33d43c80b76">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sort_y[<span class="dv">0</span>:<span class="dv">10</span>])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">0</span>:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[-2.7111624789659685, -1.8890132459676727, -1.6480751708556527, -1.303157231604361, -1.2273520542445742, -1.1120207626922813, -0.9447516230607774, -0.7819084623568421, -0.7364540870016669, -0.6832266617805622]
+[0.345584192064786, 0.8216181435011584, 0.33043707618338714, -1.303157231604361, 0.9053558666731177, 0.4463745723640113, -0.5369532353602852, 0.5811181041963531, 0.36457239618607573, 0.294132496655526]</code></pre>
+</div>
+</div>
+<p>Now, given a value of p, we can remove the lowest and high p% of values. We can do this with the <code>floor()</code> function. This gives us the largest interger below a given value.</p>
+<div id="g-ATQJSkChz8" class="cell" data-outputid="6f058ead-fda5-4f9d-f7f7-fe4738b57a64">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(floor(<span class="dv">4</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(floor(<span class="fl">4.2</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(floor(<span class="fl">4.9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4
+4
+4</code></pre>
+</div>
+</div>
+<p>Given a p (for proportion) we can determine the number of observations corresponding to that proportion using the length of <code>y</code>.</p>
+<div id="1c800c3c" class="cell" data-outputid="d0d18874-d7c4-4adc-bf9f-3b404cd4ea43">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.11</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>to_remove</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.5</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="108">
+<pre><code>5</code></pre>
+</div>
+</div>
+<p>We can remove observations by simply subsetting our list using the <code>:</code> operator we studied. Remember that this operator doesn’t include the <strong>last</strong> value. (i.e.&nbsp;<code>2:5</code> gives <code>2</code>, <code>3</code>, <code>4</code>)</p>
+<div id="556a600d" class="cell" data-outputid="a461ca29-1ea6-4e3e-81a0-477710886eb2">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([to_remove, <span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove])<span class="co">#values we want to keep are between these</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#remember, counting starts at 0</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we want the remove the first 5 values so we should start with the 5th index (the 6th actual value!)</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#with a length 50 list, we want to remove the 46-50th elements which correspond to the 45-49 indices</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#since we don't include our last index, we can end on 45</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[5, 45]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="109">
+<pre><code>[-1.1120207626922813,
+ -0.9447516230607774,
+ -0.7819084623568421,
+ -0.7364540870016669,
+ -0.6832266617805622,
+ -0.5369532353602852,
+ -0.5140063716874629,
+ -0.5062916583143148,
+ -0.48211931267997826,
+ -0.42219041157635356,
+ -0.37760500712699807,
+ -0.2924567509650886,
+ -0.2756029052993704,
+ -0.2571922406188707,
+ -0.17477209205516195,
+ -0.16290994799305278,
+ -0.09826996785221727,
+ -0.07204367972722743,
+ 0.008142180518343508,
+ 0.02842224131579679,
+ 0.03558623705548571,
+ 0.03972210748165899,
+ 0.09548302746945433,
+ 0.10901408782154753,
+ 0.16746474422274113,
+ 0.2136429974986111,
+ 0.21732193102256359,
+ 0.294132496655526,
+ 0.33043707618338714,
+ 0.345584192064786,
+ 0.36457239618607573,
+ 0.4463745723640113,
+ 0.5467129866124469,
+ 0.5811181041963531,
+ 0.5937480717858228,
+ 0.5988462126346276,
+ 0.6467029962018469,
+ 0.6630633723762617,
+ 0.8216181435011584,
+ 0.8911669542823284]</code></pre>
+</div>
+</div>
+<section id="modify-the-function-arguments" class="level3">
+<h3 class="anchored" data-anchor-id="modify-the-function-arguments">Modify the function arguments</h3>
+<p>Now that we have the process down (this is a good way to write functions by the way, write them outside of a function first and then put the pieces into the function), we can add our arguments/calculations.</p>
+<p>We’ll add a - <code>method =</code> argument with a default value of <code>None</code>. <code>None</code> is a special name that defines no value. + If this argument takes on <code>Trim</code>, we’ll do a trimmed mean. + This can be done using <code>if Boolean:</code> with the resulting code to execute tabbed in four spaces - a <code>p =</code> argument to specify the proportion to remove with a default value set to 0.</p>
+<div id="28d27010" class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y, method <span class="op">=</span> <span class="va">None</span>, p <span class="op">=</span> <span class="dv">0</span>):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">    If method is set to Trim, will remove outer most p values off the data</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">    before finding the mean</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">"Trim"</span>: <span class="co">#we'll cover if shortly! The indented code only runs if this condition is met</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>      sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>      to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)] <span class="co">#replace y with the modified version</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s test the function!</p>
+<div id="3A3SGZspEd2o" class="cell" data-outputid="a44fc33f-b982-4b9e-d7da-d4da059dd3e6">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="dv">0</span>) <span class="co">#usual mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="115">
+<pre><code>-0.03607807742830818</code></pre>
+</div>
+</div>
+<div id="hTdHKb0FEzUG" class="cell" data-outputid="e942ddc0-b6df-456a-dcab-747d409d7a28">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.05</span>) <span class="co">#5% trimmed mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<pre><code>-0.029659532804894563</code></pre>
+</div>
+</div>
+<div id="h_Ri3pEpEsdY" class="cell" data-outputid="fa681dd8-9933-4341-fadf-d1828b838a15">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, method <span class="op">=</span> <span class="st">"trim"</span>, p <span class="op">=</span> <span class="fl">0.05</span>) <span class="co">#mean not trimmed if method not set correctly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="117">
+<pre><code>-0.03607807742830817</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="positional-vs-named-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="positional-vs-named-arguments">Positional vs Named Arguments</h2>
+<ul>
+<li>A function can be called using positional or named args</li>
+</ul>
+<div id="d4e0b529" class="cell" data-outputid="8d3f06df-6de5-4a1c-ad06-927506fde91d">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#def find_mean(y, method = None, p = 0):</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_mean(y, <span class="va">None</span>))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_mean(method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.1</span>, y <span class="op">=</span> y))</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_mean(y, <span class="st">"Trim"</span>, <span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-0.03607807742830817
+-0.009797451217442077
+-0.009797451217442077</code></pre>
+</div>
+</div>
+<ul>
+<li>You can’t place positional args after a keyword though!</li>
+</ul>
+<div id="b1cc77d7" class="cell" data-outputid="6043563c-e7dc-430b-e3f3-4447b6e322a4">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>find_mean(y <span class="op">=</span> x, <span class="st">"Trim"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>SyntaxError: positional argument follows keyword argument (&lt;ipython-input-119-39dc4eceb262&gt;, line 1)</code></pre>
+</div>
+</div>
+</section>
+<section id="defining-the-type-of-argument" class="level2">
+<h2 class="anchored" data-anchor-id="defining-the-type-of-argument">Defining the Type of Argument</h2>
+<ul>
+<li>A function definition may look like:</li>
+</ul>
+<pre><code>def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+           -----------    ----------     ----------
+           |              |                  |
+           |         Positional or keyword   |
+           |                                 - Keyword only
+           -- Positional only</code></pre>
+<div id="e5e5f87b" class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_it(x, y, <span class="op">/</span>):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Must pass x and y positionally!"</span> <span class="op">+</span> x <span class="op">+</span> y)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_it(x, <span class="op">/</span>, y):</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x must be passed positionally.  y can be positional or named"</span> <span class="op">+</span> x <span class="op">+</span> y)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_it(x, <span class="op">/</span>, y, <span class="op">*</span>, z):</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Now z must be passed as a named argument"</span> <span class="op">+</span> x <span class="op">+</span> y <span class="op">+</span> z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s modify our mean function and show this.</p>
+<div id="oSvagJuyFzN1" class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#with this, y must be passes positionally!</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y, <span class="op">/</span>, method <span class="op">=</span> <span class="va">None</span>, p <span class="op">=</span> <span class="dv">0</span>):</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">    If method is set to Trim, will remove outer most p values off the data</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">    before finding the mean</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">"Trim"</span>: <span class="co">#we'll cover if shortly! The indented code only runs if this condition is met</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>      sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>      to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)] <span class="co">#replace y with the modified version</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="Qzy_Cmh9F5dU" class="cell" data-outputid="2580af98-be06-461c-eda1-33bbceb85b06">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="124">
+<pre><code>-0.009797451217442077</code></pre>
+</div>
+</div>
+<div id="A2hl5vN7F-30" class="cell" data-outputid="55039c81-d1fa-48d0-e392-6adec1de7b3f">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>find_mean(y <span class="op">=</span> y, method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.1</span>) <span class="co">#this won't work!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: find_mean() got some positional-only arguments passed as keyword arguments: 'y'</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="write-our-own-correlation-function" class="level2">
+<h2 class="anchored" data-anchor-id="write-our-own-correlation-function">Write Our Own Correlation Function</h2>
+<p>Just to demonstrate something more complicated, let’s write our own function to compute the (usual) sample correlation between two variables, call them <code>x</code> and <code>y</code>.</p>
+<ul>
+<li>Pearson’s correlation:</li>
+</ul>
+<p><span class="math display">\[r = \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^n(x_i-\bar{x})^2\sum_{i=1}^{n}(y_i-\bar{y})^2}}\]</span></p>
+<p>where - <span class="math inline">\((x_i, y_i)\)</span> are numeric variables observed on the same <span class="math inline">\(n\)</span> units, <span class="math inline">\(i=1,...,n\)</span></p>
+<section id="plan" class="level3">
+<h3 class="anchored" data-anchor-id="plan">Plan</h3>
+<p>Function inputs: - <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <strong>lists</strong> with numeric entries only</p>
+<p>Function body: - Find sample means for <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> - Compute numerator sum and denominator sums - Find quotient and return that value</p>
+<section id="finding-means" class="level4">
+<h4 class="anchored" data-anchor-id="finding-means">Finding Means</h4>
+<div id="eabd1726" class="cell" data-outputid="d34f712a-485d-4941-8524-a3c36d115d0e">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">51</span>))</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">1</span>:<span class="dv">10</span>])</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="op">=</span> find_mean(x)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>xbar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="126">
+<pre><code>25.5</code></pre>
+</div>
+</div>
+<div id="53cabf06" class="cell" data-outputid="a44860c5-f621-4082-9a50-27b713c2769d">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use same y as before</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">list</span>(np.random.default_rng(<span class="dv">1</span>).standard_normal(<span class="dv">50</span>))</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">1</span>:<span class="dv">10</span>])</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>ybar <span class="op">=</span> find_mean(y)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>ybar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.8216181435011584, 0.33043707618338714, -1.303157231604361, 0.9053558666731177, 0.4463745723640113, -0.5369532353602852, 0.5811181041963531, 0.36457239618607573, 0.294132496655526]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre><code>-0.03607807742830817</code></pre>
+</div>
+</div>
+<p>These two vectors are not related and should have a near 0 correlation!</p>
+<p>Next, we need to find the numerator and denominator sums. Finding the sums will be easier once we learn arrays, but for now we’ll peak at a <code>for</code> loop and the <code>zip()</code> function.</p>
+<p>Let’s start with computation of <span class="math display">\[\sum_{i=1}^n(x_i-\bar{x})^2\]</span></p>
+<div id="d99f4bd8" class="cell" data-outputid="d8dc39d5-cdd4-4d68-ba0d-5badf8142269">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#computation in one of our sums (we want this across all 50 values, then added up)</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>(x[<span class="dv">0</span>]<span class="op">-</span>xbar)<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="128">
+<pre><code>600.25</code></pre>
+</div>
+</div>
+<p>So really we want to find all of these values:</p>
+<pre><code>(x[0]-xbar)**2
+(x[1]-xbar)**2
+...
+(x[49]-xbar)**2</code></pre>
+<p>We can use <code>for</code> to iterate over the values of 0, 1, …, 49. Similar to function definitions and <code>if</code> statements, we just tab in (four spaces) the code to be executed at each iteration of the for loop.</p>
+<div id="jFHhCM1iHKCZ" class="cell" data-outputid="d231cf0b-e008-4369-e9b1-b9b6a05c4dd1">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#initialize a value to store the sum in</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>den_x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#use a for loop to iterate across values (studies more later!)</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> x:</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    den_x <span class="op">+=</span> (i<span class="op">-</span>xbar)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>den_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="129">
+<pre><code>10412.5</code></pre>
+</div>
+</div>
+<p>We can very easily get a similar computation for <span class="math inline">\(y\)</span>’s portion of the denominator.</p>
+<p>To get the numerator, that’s a bit more work. We really need to find</p>
+<pre><code>(x[0]-xbar)(y[0]-ybar)
+(x[1]-xbar)(y[1]-ybar)
+...
+(x[49]-xbar)(y[49]-ybar)</code></pre>
+<p>We can <code>zip()</code> the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> lists together. This essentially just pairs the 0th elements, the 1st elements, etc. Then we can iterate over the values together.</p>
+<div id="d4Sj3iPPIzQG" class="cell" data-outputid="a14c7be5-e866-401a-cad9-0c992f5a03be">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, j <span class="kw">in</span> <span class="bu">zip</span>(x, y):</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    num <span class="op">+=</span> (i<span class="op">-</span>xbar)<span class="op">*</span>(j<span class="op">-</span>ybar)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="130">
+<pre><code>-51.69981003655184</code></pre>
+</div>
+</div>
+<p>Ok, now we are ready to put these together and calculate our correlation!</p>
+<div id="8dcd746b" class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_corr(x, y):</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Compute Pearson's Correlation Coefficient</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co">    x and y are assumed to be lists with numeric values</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Data is assumed to have no missing values</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    xbar <span class="op">=</span> find_mean(x)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    ybar <span class="op">=</span> find_mean(y)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    num <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    den_x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    den_y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, j <span class="kw">in</span> <span class="bu">zip</span>(x, y):</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>        num <span class="op">+=</span>(i<span class="op">-</span>xbar)<span class="op">*</span>(j<span class="op">-</span>ybar)</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>        den_x <span class="op">+=</span>(i<span class="op">-</span>xbar)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>        den_y <span class="op">+=</span>(j<span class="op">-</span>ybar)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num<span class="op">/</span>sqrt(den_x<span class="op">*</span>den_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s test our function on our data!</p>
+<div id="2ff6ce99" class="cell" data-outputid="d62e204f-cd4e-4599-e951-7a30eafe33fd">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>find_corr(x, y) <span class="co">#near 0!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<pre><code>-0.0813179110596017</code></pre>
+</div>
+</div>
+<p>Note that all functions with a doc string have a <code>.__doc__</code> attribute that you can look at to understand that function (assuming the doc string is useful!).</p>
+<div id="L9WmUgl1JdPU" class="cell" data-outputid="6b8a1187-ee17-432c-a1f8-1892e5a34f64">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_corr.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Compute Pearson's Correlation Coefficient
+    x and y are assumed to be lists with numeric values
+    Data is assumed to have no missing values
+    </code></pre>
+</div>
+</div>
+<div id="kvQNp6W_Jd_8" class="cell" data-outputid="99e0382a-cab2-4172-88df-6203ea5f1ed6">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>.__doc__) <span class="co">#another example on a common function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Return the number of items in a container.</code></pre>
+</div>
+</div>
+<div id="rex_HZMEJk2l" class="cell" data-outputid="d4097344-fc9d-4947-dff9-e1adb16051fa">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.random.default_rng.__doc__) <span class="co">#another example</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Construct a new Generator with the default BitGenerator (PCG64).
+
+    Parameters
+    ----------
+    seed : {None, int, array_like[ints], SeedSequence, BitGenerator, Generator}, optional
+        A seed to initialize the `BitGenerator`. If None, then fresh,
+        unpredictable entropy will be pulled from the OS. If an ``int`` or
+        ``array_like[ints]`` is passed, then it will be passed to
+        `SeedSequence` to derive the initial `BitGenerator` state. One may also
+        pass in a `SeedSequence` instance.
+        Additionally, when passed a `BitGenerator`, it will be wrapped by
+        `Generator`. If passed a `Generator`, it will be returned unaltered.
+
+    Returns
+    -------
+    Generator
+        The initialized generator object.
+
+    Notes
+    -----
+    If ``seed`` is not a `BitGenerator` or a `Generator`, a new `BitGenerator`
+    is instantiated. This function does not manage a default global instance.
+    
+    Examples
+    --------
+    ``default_rng`` is the recommended constructor for the random number class
+    ``Generator``. Here are several ways we can construct a random 
+    number generator using ``default_rng`` and the ``Generator`` class. 
+    
+    Here we use ``default_rng`` to generate a random float:
+ 
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; rng = np.random.default_rng(12345)
+    &gt;&gt;&gt; print(rng)
+    Generator(PCG64)
+    &gt;&gt;&gt; rfloat = rng.random()
+    &gt;&gt;&gt; rfloat
+    0.22733602246716966
+    &gt;&gt;&gt; type(rfloat)
+    &lt;class 'float'&gt;
+     
+    Here we use ``default_rng`` to generate 3 random integers between 0 
+    (inclusive) and 10 (exclusive):
+        
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; rng = np.random.default_rng(12345)
+    &gt;&gt;&gt; rints = rng.integers(low=0, high=10, size=3)
+    &gt;&gt;&gt; rints
+    array([6, 2, 7])
+    &gt;&gt;&gt; type(rints[0])
+    &lt;class 'numpy.int64'&gt;
+    
+    Here we specify a seed so that we have reproducible results:
+    
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; rng = np.random.default_rng(seed=42)
+    &gt;&gt;&gt; print(rng)
+    Generator(PCG64)
+    &gt;&gt;&gt; arr1 = rng.random((3, 3))
+    &gt;&gt;&gt; arr1
+    array([[0.77395605, 0.43887844, 0.85859792],
+           [0.69736803, 0.09417735, 0.97562235],
+           [0.7611397 , 0.78606431, 0.12811363]])
+
+    If we exit and restart our Python interpreter, we'll see that we
+    generate the same random numbers again:
+
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; rng = np.random.default_rng(seed=42)
+    &gt;&gt;&gt; arr2 = rng.random((3, 3))
+    &gt;&gt;&gt; arr2
+    array([[0.77395605, 0.43887844, 0.85859792],
+           [0.69736803, 0.09417735, 0.97562235],
+           [0.7611397 , 0.78606431, 0.12811363]])
+
+    </code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="other-things-to-note" class="level2">
+<h2 class="anchored" data-anchor-id="other-things-to-note">Other Things to Note</h2>
+<ul>
+<li>When executing a function, a new symbol table is used for the local variables</li>
+<li>This keeps us from accidentally overwriting something</li>
+</ul>
+<div id="90484fbc" class="cell" data-outputid="ae2f7148-9f43-4760-82be-c41457d5dffc">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>))</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(z):</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> z<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"In the function environment, z = "</span> <span class="op">+</span> <span class="bu">str</span>(z) <span class="op">+</span> <span class="st">" and y = "</span> <span class="op">+</span> <span class="bu">str</span>(y))</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(y)</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square(y))</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In the function environment, z = [ 1  2  3  4  5  6  7  8  9 10] and y = [  1   4   9  16  25  36  49  64  81 100]
+[  1   4   9  16  25  36  49  64  81 100]
+[ 1  2  3  4  5  6  7  8  9 10]</code></pre>
+</div>
+</div>
+<div id="f186e177" class="cell" data-outputid="f738a11d-3857-484d-a8f7-d57a76ef38d4">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z) <span class="co">#z isn't defined outside the function call!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'z' is not defined</code></pre>
+</div>
+</div>
+<ul>
+<li>You can define global variables in a function using <code>global</code></li>
+</ul>
+<div id="111f7d9e" class="cell" data-outputid="0f0615be-801a-45ca-b1d6-9e75ad32078a">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(z):</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> y</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> z<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"In the function environment, z = "</span> <span class="op">+</span> <span class="bu">str</span>(z) <span class="op">+</span> <span class="st">" and y = "</span> <span class="op">+</span> <span class="bu">str</span>(y))</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(y)</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square(y))</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y) <span class="co">#modified globally now</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>In the function environment, z = [ 1  2  3  4  5  6  7  8  9 10] and y = [  1   4   9  16  25  36  49  64  81 100]
+[  1   4   9  16  25  36  49  64  81 100]
+[  1   4   9  16  25  36  49  64  81 100]</code></pre>
+</div>
+</div>
+<ul>
+<li>If nothing is returned from a function (with <code>return</code>) then it actually returns the special <code>None</code></li>
+</ul>
+<div id="a15a81ee" class="cell" data-outputid="98db9d66-f32f-4bc0-a0fb-3985fbea1b94">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square_it(a):</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">type</span>(a) <span class="op">==</span> <span class="bu">int</span>) <span class="kw">or</span> (<span class="bu">type</span>(a) <span class="op">==</span> <span class="bu">float</span>):</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> a<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square_it(<span class="dv">10</span>))</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square_it(<span class="fl">10.5</span>))</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(square_it(<span class="st">"10"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>100
+110.25
+None
+None</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Default values are only evaluated once - at the time of the function <strong>definition</strong></p></li>
+<li><p>Mutable objects can cause an issue! (Lists are mutable as they can be changed, some objects, like tuples, are immutable and can’t be modified.)</p></li>
+</ul>
+<div id="bcf91492" class="cell" data-outputid="435dd899-290b-4fd5-bd66-cbd0dbdc11f8">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#append a value to a list but give a default empty list if not given</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_append(value, L <span class="op">=</span> []):</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    L.append(value)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="co">#correctly appends "A" to the list</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_append(<span class="st">"A"</span>))</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="co">#appends "B" to the previous list as L = [] was only evaluated at the time the function was created!</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_append(<span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['A']
+['A', 'B']</code></pre>
+</div>
+</div>
+<ul>
+<li>To avoid this behavior, instead define the default value as <code>None</code> and take care of things within the function body</li>
+</ul>
+<div id="cd9089b8" class="cell" data-outputid="330c47f1-b508-4442-bdf9-b5fc9f1802c5">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_append(value, L <span class="op">=</span> <span class="va">None</span>):</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> L <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>        L <span class="op">=</span> []</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>    L.append(value)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_append(<span class="st">"A"</span>))</span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_append(<span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['A']
+['B']</code></pre>
+</div>
+</div>
+</section>
+<section id="video-demo" class="level2">
+<h2 class="anchored" data-anchor-id="video-demo">Video Demo</h2>
+<p>This quick video demo gives another example of creating our own function!</p>
+<p>Remember to pop these out into a panopto window as they are much easier to watch that way!</p>
+<div id="XsXfzp9iy5mN" class="cell" data-outputid="93d8202a-ae7a-414d-d238-5f1cdc651649" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae1858b3-74cf-4065-8ec7-b0f800e4f827&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+
+        <iframe width="720" height="405" src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae1858b3-74cf-4065-8ec7-b0f800e4f827&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="recap" class="level1">
+<h1>Recap</h1>
+<ul>
+<li>Writing functions is super cool!</li>
+</ul>
+<div id="34ffc089" class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func_name(args):</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Doc string</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>    body</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Many ways to set up your function arguments and to call your function</p></li>
+<li><p>Even more on function writing will be covered later!</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="pagination-link" aria-label="Common Uses for Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Common Uses for Data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../01_Programming_in_python/09-Control_Flow.html" class="pagination-link" aria-label="Control Flow">
+        <span class="nav-page-text">Control Flow</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
